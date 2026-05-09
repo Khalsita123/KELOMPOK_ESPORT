@@ -148,6 +148,8 @@ nav .navi a:hover:after{
     color: white;
     width: 100%;
     margin-left: 0;
+    text-decoration: none;
+    
 }
 
 .dropdown:hover .dropdown-content {
