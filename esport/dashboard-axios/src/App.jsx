@@ -10,12 +10,17 @@ import Match from "./components/Match";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-function App() {
+import MLBBCommunity from "./components/MLBBCommunity";
+
+import { Routes, Route } from "react-router-dom";
+
+function HomePage() {
   return (
     <>
       <header>
-        <Header></Header>
+        <Header />
       </header>
+
       <nav>
         <Navbar />
       </nav>
@@ -35,6 +40,15 @@ function App() {
         <Footer />
       </footer>
     </>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/mlbb" element={<MLBBCommunity />} />
+    </Routes>
   );
 }
 

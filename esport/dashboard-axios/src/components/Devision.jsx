@@ -1,10 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const games = [
   {
     id: "pubg",
     name: "PUBG MOBILE",
-    type: "mobile",
+    type: "mobile", 
     accent: "#c8a000",
     bg: "linear-gradient(160deg, #1c2d4a, #0d1a30)",
     charImg: "/src/assets/images/pubg-char.jpg",
@@ -89,6 +90,8 @@ const PCIcon = () => (
 );
 
 export default function Devision() {
+  const navigate = useNavigate();
+
   const handleMouseEnter = (e, game) => {
     const btn = e.currentTarget.querySelector(".dv-btn");
     const bar = e.currentTarget.querySelector(".dv-accent-bar");
@@ -118,9 +121,14 @@ export default function Devision() {
           <div
             key={game.id}
             className="dv-card"
-            style={{ background: game.bg }}
+            style={{ background: game.bg, cursor: game.id === "mlbb" ? "pointer" : "default" }}
             onMouseEnter={(e) => handleMouseEnter(e, game)}
             onMouseLeave={(e) => handleMouseLeave(e, game)}
+            onClick={() => {
+              if (game.id === "mlbb") {
+                navigate("/mlbb");
+              }
+            }}
           >
             <div
               className="dv-accent-bar"
@@ -143,6 +151,11 @@ export default function Devision() {
               <button
                 className="dv-btn"
                 style={{ color: game.accent, borderColor: game.accent }}
+                onClick={() => {
+                  if (game.id === "mlbb") {
+                    navigate("/mlbb");
+                  }
+                }}
               >
                 View Players
               </button>

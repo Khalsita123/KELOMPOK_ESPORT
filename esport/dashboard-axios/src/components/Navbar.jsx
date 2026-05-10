@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import logoEsport from '../assets/logo_esport1.png';
 import { User, Menu,} from 'lucide-react';
 
@@ -33,13 +34,13 @@ function Navbar() {
       </div>
 
       <div className="navi">
-        <a href="#">HOME</a>
+        <Link to="/">HOME</Link>
         <div className="dropdown">
           <a className="droplist">DIVISIONS</a>
           <div className="dropdown-content">
             <a className="pubg" href="">PUBG</a>
             <a className="ff" href="">FREE FIRE</a>
-            <a className="ml" href="">MOBILE LEGEND</a>
+            <Link className="ml" to="/mlbb">MOBILE LEGEND</Link>
             <a className="hok" href="">HONOR OF KING</a>
             <a className="valo" href="">VALORANT</a>
             <a className="dota2" href="">DOTA 2</a>
