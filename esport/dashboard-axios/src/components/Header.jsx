@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Header.css';
+import '../pages/style/Header.css';
 
 import sponsor1  from '../assets/sponsor1.jpg';
 import sponsor2  from '../assets/sponsor2.png';
