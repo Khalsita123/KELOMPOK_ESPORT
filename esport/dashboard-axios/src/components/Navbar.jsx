@@ -34,7 +34,7 @@ function Navbar() {
       </div>
 
       <div className="navi">
-        <a href="#">HOME</a>
+        <Link to="/">HOME</Link>
         <div className="dropdown">
           <a className="droplist">DIVISIONS</a>
           <div className="dropdown-content">
@@ -48,6 +48,7 @@ function Navbar() {
             <a className="point" href="">POINT BLANK</a>
           </div>
         </div>
+        
         <a href="#">ABOUT</a>
         <a href="#">MATCH</a>
         <a href="#">PARTNER</a>
