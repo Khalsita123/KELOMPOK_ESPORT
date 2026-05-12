@@ -52,7 +52,7 @@ function Navbar() {
         <a href="#">PARTNER</a>
         <a href="#">CREATOR</a>
         <a href="#">NEWS</a>
-        <a href="#">SHOPE</a>
+        <a href="#">STORE</a>S
       </div>
 
       <div className="nav-extra">
