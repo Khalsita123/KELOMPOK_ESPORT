@@ -1,4 +1,3 @@
-import React from 'react';
 import '../pages/style/Header.css';
 
 import sponsor1  from '../assets/sponsor1.jpg';

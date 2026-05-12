@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import logoEsport from '../assets/logo_esport1.png';
 import { User, Menu,} from 'lucide-react';
@@ -33,7 +34,7 @@ function Navbar() {
       </div>
 
       <div className="navi">
-        <a href="#">HOME</a>
+        <Link to="/">HOME</Link>
         <div className="dropdown">
           <a className="droplist">DIVISIONS</a>
           <div className="dropdown-content">
@@ -47,12 +48,13 @@ function Navbar() {
             <a className="point" href="">POINT BLANK</a>
           </div>
         </div>
+        
         <a href="#">ABOUT</a>
         <a href="#">MATCH</a>
         <a href="#">PARTNER</a>
         <a href="#">CREATOR</a>
         <a href="#">NEWS</a>
-        <a href="#">SHOPE</a>
+        <Link to="/Store">STORE</Link>
       </div>
 
       <div className="nav-extra">

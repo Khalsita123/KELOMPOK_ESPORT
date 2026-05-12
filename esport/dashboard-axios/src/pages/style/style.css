@@ -974,14 +974,16 @@ nav .nav-extra a:hover {
   border-color: #333;
 }
 
+
 .partner-img {
   max-width: 140px;
   max-height: 60px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  mix-blend-mode: screen;  /* ← tambah ini */
   opacity: 0.6;
   transition: opacity 0.2s;
 }
+
 
 .partner-card:hover .partner-img {
   opacity: 1;
