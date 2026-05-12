@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import logoEsport from '../assets/logo_esport1.png';
 import { User, Menu,} from 'lucide-react';
@@ -52,7 +53,7 @@ function Navbar() {
         <a href="#">PARTNER</a>
         <a href="#">CREATOR</a>
         <a href="#">NEWS</a>
-        <a href="#">STORE</a>S
+        <Link to="/Store">STORE</Link>
       </div>
 
       <div className="nav-extra">
