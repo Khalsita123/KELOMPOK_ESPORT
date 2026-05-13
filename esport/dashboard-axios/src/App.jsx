@@ -1,18 +1,11 @@
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Partner from "./components/Partner";
-import Division from "./components/Devision";
-import Creator from "./components/Creator";
-import News from "./components/News";
-import Match from "./components/Match";
-import Contact from "./components/Contact";
+import Home from "./pages/home/home";
 import Footer from "./components/Footer";
+import Store from "./pages/Store/Store"; 
 
 import MLBBCommunity from "./components/MLBBCommunity";
-
-import { Routes, Route } from "react-router-dom";
 
 function HomePage() {
   return (
@@ -25,15 +18,11 @@ function HomePage() {
         <Navbar />
       </nav>
 
-      <main>
-        <Hero />
-        <About />
-        <Partner />
-        <Division />
-        <Creator />
-        <News />
-        <Match />
-        <Contact />
+      <main>      
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Store" element={<Store />} />
+        </Routes>
       </main>
 
       <footer>
@@ -46,7 +35,7 @@ function HomePage() {
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/*" element={<HomePage />} />
       <Route path="/mlbb" element={<MLBBCommunity />} />
     </Routes>
   );
