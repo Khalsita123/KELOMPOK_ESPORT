@@ -44,14 +44,14 @@ function Navbar() {
             <a className="hok" href="">HONOR OF KING</a>
             <a className="valo" href="">VALORANT</a>
             <a className="dota2" href="">DOTA 2</a>
-            <a className="csgo" href="">CSGO</a>
+            <Link className="csgo" to="/csgo">CSGO</Link>
             <a className="point" href="">POINT BLANK</a>
           </div>
         </div>
         
         <a href="#">ABOUT</a>
         <a href="#">MATCH</a>
-        <a href="#">PARTNER</a>
+        <Link to="/partner">PARTNER</Link>
         <a href="#">CREATOR</a>
         <a href="#">NEWS</a>
         <Link to="/Store">STORE</Link>

@@ -1,228 +1,380 @@
-import React from 'react';
-import { Trophy, Users, Swords, Gamepad2, ChevronRight, PlayCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Trophy, Users, Swords, Gamepad2, ChevronRight, PlayCircle, Star, Crosshair, Shield, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Header from "./Header";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
 
 const MLBBCommunity = () => {
+  const [hoveredPlayer, setHoveredPlayer] = useState(null);
+
   const players = [
-    { id: 1, name: 'LEMON', role: 'MIDLANER', winRate: '78%', favHero: 'Kagura', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=400&h=400' },
-    { id: 2, name: 'XINNN', role: 'GOLD LANER', winRate: '82%', favHero: 'Claude', image: 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&q=80&w=400&h=400' },
-    { id: 3, name: 'ALBERT', role: 'JUNGLER', winRate: '85%', favHero: 'Ling', image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=400&h=400' },
-    { id: 4, name: 'VYN', role: 'ROAMER', winRate: '75%', favHero: 'Franco', image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=400&h=400' },
+    { id: 1, name: 'LEMON', role: 'MIDLANER', winRate: '78%', favHero: 'Kagura', kda: '5.2', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600&h=800', signature: 'Alien' },
+    { id: 2, name: 'XINNN', role: 'GOLD LANER', winRate: '82%', favHero: 'Claude', kda: '6.1', image: 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&q=80&w=600&h=800', signature: 'Aggressive' },
+    { id: 3, name: 'ALBERT', role: 'JUNGLER', winRate: '85%', favHero: 'Ling', kda: '7.4', image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=600&h=800', signature: 'Baby Alien' },
+    { id: 4, name: 'VYN', role: 'ROAMER', winRate: '75%', favHero: 'Franco', kda: '4.8', image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=600&h=800', signature: 'Captain' },
   ];
 
   const matches = [
-    { id: 1, teamA: 'RRQ HOSHI', teamB: 'ONIC ESPORTS', score: '3 - 1', status: 'VICTORY', date: 'Oct 24, 2026' },
-    { id: 2, teamA: 'RRQ HOSHI', teamB: 'EVOS LEGENDS', score: '2 - 0', status: 'VICTORY', date: 'Oct 18, 2026' },
-    { id: 3, teamA: 'RRQ HOSHI', teamB: 'ECHO', score: '1 - 3', status: 'DEFEAT', date: 'Oct 12, 2026' },
+    { id: 1, teamA: 'RRQ HOSHI', teamB: 'ONIC ESPORTS', score: '3 - 1', status: 'VICTORY', date: 'Oct 24, 2026', tournament: 'MPL ID S18 - Grand Final' },
+    { id: 2, teamA: 'RRQ HOSHI', teamB: 'EVOS LEGENDS', score: '2 - 0', status: 'VICTORY', date: 'Oct 18, 2026', tournament: 'MPL ID S18 - Playoffs' },
+    { id: 3, teamA: 'RRQ HOSHI', teamB: 'ECHO', score: '1 - 3', status: 'DEFEAT', date: 'Oct 12, 2026', tournament: 'M6 World Championship' },
   ];
 
-  // Gaya kustom untuk background hero
-  const heroStyle = {
-    backgroundImage: `linear-gradient(to top, rgba(5,5,5,1), rgba(5,5,5,0.8), transparent), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1920&h=1080')`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundBlendMode: 'luminosity'
+  const stats = [
+    { label: 'Global Rank', value: '#1', icon: <Trophy className="w-10 h-10"/>, color: 'from-yellow-400 to-yellow-600' },
+    { label: 'Active Members', value: '150K+', icon: <Users className="w-10 h-10"/>, color: 'from-blue-400 to-blue-600' },
+    { label: 'Tournaments Won', value: '42', icon: <Swords className="w-10 h-10"/>, color: 'from-red-400 to-red-600' },
+    { label: 'Total Matches', value: '1M+', icon: <Gamepad2 className="w-10 h-10"/>, color: 'from-purple-400 to-purple-600' },
+  ];
+
+  // Animation variants
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
   return (
-    <div className="bg-[#050505] text-white overflow-x-hidden" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-      <header>
-        <Header/>
-      </header>
-      <nav>
-        <Navbar/>
-      </nav>
-
+    <div className="bg-[#030303] text-white min-h-screen overflow-x-hidden selection:bg-[#F3B229] selection:text-black font-sans">
       
-      <section className="relative w-full h-[70vh] flex items-center justify-center" style={heroStyle}>
-        <div className="relative z-20 text-center px-4 max-w-5xl mx-auto">
+      {/* HERO SECTION */}
+      <section className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030303]/80 to-[#030303] z-10" />
+          <motion.div 
+            initial={{ scale: 1.2, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.6 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1920&h=1080')] bg-cover bg-center bg-no-repeat mix-blend-luminosity"
+          />
+          {/* Animated glowing orbs */}
+          <motion.div 
+            animate={{ y: [0, -20, 0], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#F3B229]/20 rounded-full blur-[100px]"
+          />
+          <motion.div 
+            animate={{ y: [0, 30, 0], opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/20 rounded-full blur-[100px]"
+          />
+        </div>
+
+        <div className="relative z-20 text-center px-4 max-w-6xl mx-auto mt-20">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            variants={staggerContainer}
+            initial="hidden"
+            animate="show"
+            className="flex flex-col items-center"
           >
-            <h2 className="text-[#F3B229] font-bold tracking-widest text-sm md:text-xl mb-4 uppercase">
-              Official MLBB Division
-            </h2>
-            <h1 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter mb-6 text-white drop-shadow-2xl" style={{ fontFamily: "'Oswald', sans-serif" }}>
-              Dominate <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F3B229] to-yellow-500">The Arena</span>
-            </h1>
-            <p className="text-gray-400 text-lg md:text-2xl max-w-2xl mx-auto mb-10">
-              Join the most aggressive and elite Mobile Legends: Bang Bang community. We play to win, we play to dominate.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button className="bg-[#F3B229] hover:bg-yellow-500 text-black font-bold py-4 px-8 uppercase tracking-wider transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
-                <Swords size={20}/> Join The Squad
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+              <span className="w-2 h-2 rounded-full bg-[#F3B229] animate-pulse" />
+              <span className="text-[#F3B229] font-bold tracking-widest text-xs md:text-sm uppercase">Official MLBB Division</span>
+            </motion.div>
+
+            <motion.h1 variants={fadeInUp} className="text-6xl md:text-8xl lg:text-9xl font-black uppercase italic tracking-tighter mb-6 text-white drop-shadow-2xl leading-none">
+              Dominate <br/>
+              <span className="relative inline-block">
+                <span className="absolute -inset-2 bg-[#F3B229] blur-2xl opacity-20 z-0"></span>
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#F3B229] via-yellow-400 to-orange-500">The Arena</span>
+              </span>
+            </motion.h1>
+
+            <motion.p variants={fadeInUp} className="text-gray-400 text-lg md:text-2xl max-w-2xl mx-auto mb-10 font-medium leading-relaxed">
+              Join the most aggressive and elite <strong className="text-white">Mobile Legends: Bang Bang</strong> community. We play to win, we play to dominate.
+            </motion.p>
+
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto">
+              <button className="group relative w-full sm:w-auto bg-[#F3B229] text-black font-black py-4 px-10 uppercase tracking-widest overflow-hidden skew-x-[-10deg] hover:scale-105 transition-transform duration-300">
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+                <span className="block skew-x-[10deg] flex items-center justify-center gap-3">
+                  <Swords size={22} className="group-hover:rotate-12 transition-transform" /> Join The Squad
+                </span>
               </button>
-              <button className="bg-transparent border border-gray-600 hover:border-[#F3B229] hover:text-[#F3B229] text-white font-bold py-4 px-8 uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2">
-                <PlayCircle size={20}/> Watch Highlights
+              
+              <button className="group relative w-full sm:w-auto bg-transparent border border-white/20 text-white font-bold py-4 px-10 uppercase tracking-widest hover:border-[#F3B229] hover:text-[#F3B229] transition-colors duration-300 backdrop-blur-sm">
+                <span className="flex items-center justify-center gap-3">
+                  <PlayCircle size={22} className="group-hover:scale-110 transition-transform" /> Watch Highlights
+                </span>
               </button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }} 
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 z-20"
+        >
+          <span className="text-xs uppercase tracking-widest font-bold rotate-90 mb-4 text-[#F3B229]">Scroll</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-[#F3B229] to-transparent" />
+        </motion.div>
       </section>
 
-      
-      <div className="border-y border-gray-800 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 py-8 px-4 text-center">
-          {[
-            { label: 'Global Rank', value: '#1', icon: <Trophy className="text-[#F3B229] mx-auto mb-2 w-8 h-8"/> },
-            { label: 'Active Members', value: '150K+', icon: <Users className="text-[#F3B229] mx-auto mb-2 w-8 h-8"/> },
-            { label: 'Tournaments Won', value: '42', icon: <Swords className="text-[#F3B229] mx-auto mb-2 w-8 h-8"/> },
-            { label: 'Total Matches', value: '1M+', icon: <Gamepad2 className="text-[#F3B229] mx-auto mb-2 w-8 h-8"/> },
-          ].map((stat, idx) => (
+      {/* STATS SECTION */}
+      <section className="relative z-20 -mt-10 px-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {stats.map((stat, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="p-4"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: idx * 0.1, duration: 0.6 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 hover:border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden group"
             >
-              {stat.icon}
-              <h3 className="text-3xl font-black text-white" style={{ fontFamily: "'Oswald', sans-serif" }}>{stat.value}</h3>
-              <p className="text-sm text-gray-500 uppercase tracking-widest mt-1">{stat.label}</p>
+              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${stat.color} rounded-full blur-[80px] opacity-10 group-hover:opacity-30 transition-opacity duration-500`} />
+              
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className={`text-transparent bg-clip-text bg-gradient-to-br ${stat.color} mb-4 transform group-hover:scale-110 transition-transform duration-300`}>
+                  {React.cloneElement(stat.icon, { className: 'w-10 h-10 md:w-12 md:h-12 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]' })}
+                </div>
+                <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter mb-2" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                  {stat.value}
+                </h3>
+                <p className="text-xs md:text-sm text-gray-400 uppercase tracking-widest font-bold">{stat.label}</p>
+              </div>
             </motion.div>
           ))}
         </div>
-      </div>
+      </section>
 
-      
-      <section className="py-20 px-4 max-w-7xl mx-auto">
-        <div className="flex justify-between items-end mb-12 border-b border-gray-800 pb-4">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tight" style={{ fontFamily: "'Oswald', sans-serif" }}>
-              Elite <span className="text-[#F3B229]">Roster</span>
+      {/* ROSTER SECTION */}
+      <section className="py-32 px-4 max-w-7xl mx-auto relative">
+        <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent z-0" />
+        
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-1 bg-[#F3B229]" />
+              <span className="text-[#F3B229] font-bold tracking-widest uppercase">The Squad</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter leading-none" style={{ fontFamily: "'Oswald', sans-serif" }}>
+              Elite <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Roster</span>
             </h2>
-            <p className="text-gray-400 mt-2">Meet the legends dominating the arena.</p>
-          </div>
-          <button className="hidden md:flex items-center gap-1 text-[#F3B229] hover:text-white transition-colors font-bold uppercase text-sm tracking-wider">
-            View All Players <ChevronRight size={16}/>
-          </button>
+          </motion.div>
+          <motion.button 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="hidden md:flex items-center gap-2 text-white hover:text-[#F3B229] transition-colors font-bold uppercase text-sm tracking-widest group mt-6 md:mt-0"
+          >
+            View All Players <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform"/>
+          </motion.button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
           {players.map((player, idx) => (
             <motion.div
               key={player.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: idx * 0.1 }}
-              className="group relative bg-[#111111] overflow-hidden border border-gray-800 hover:border-[#F3B229] transition-colors duration-300"
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              onMouseEnter={() => setHoveredPlayer(player.id)}
+              onMouseLeave={() => setHoveredPlayer(null)}
+              className="group relative bg-[#0a0a0a] rounded-xl overflow-hidden border border-white/10 hover:border-[#F3B229]/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(243,178,41,0.15)]"
             >
+              {/* Player Image & Overlay */}
               <div className="aspect-[3/4] overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/40 to-transparent z-10 transition-opacity duration-300 group-hover:opacity-80" />
+                
+                {/* Diagonal cut design */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#030303] z-20 transform translate-x-12 -translate-y-12 rotate-45 border-l border-b border-white/10 group-hover:border-[#F3B229]/50 transition-colors" />
+                
                 <img
                   src={player.image}
                   alt={player.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110 mix-blend-luminosity"
+                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
                 />
 
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                  <span className="text-[#F3B229] font-bold tracking-widest text-xs uppercase block mb-1">
+                {/* Role Badge */}
+                <div className="absolute top-4 left-4 z-20 bg-black/60 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded flex items-center gap-2">
+                  <Crosshair size={14} className="text-[#F3B229]" />
+                  <span className="text-white font-bold tracking-widest text-[10px] uppercase">
                     {player.role}
                   </span>
-                  <h3 className="text-3xl font-black uppercase italic mb-3" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                </div>
+
+                {/* Content Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-20 transform transition-transform duration-500">
+                  <h3 className="text-4xl md:text-5xl font-black uppercase italic mb-1 text-white drop-shadow-lg" style={{ fontFamily: "'Oswald', sans-serif" }}>
                     {player.name}
                   </h3>
+                  <p className="text-[#F3B229] font-bold text-sm tracking-widest uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                    "{player.signature}"
+                  </p>
 
-                  <div className="flex justify-between items-center text-sm border-t border-gray-700 pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                    <div>
-                      <p className="text-gray-500 text-xs uppercase">Win Rate</p>
-                      <p className="text-white font-bold">{player.winRate}</p>
+                  {/* Expanded Stats on Hover */}
+                  <div className="grid grid-cols-3 gap-2 border-t border-white/10 pt-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                    <div className="text-center">
+                      <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Win Rate</p>
+                      <p className="text-white font-black text-lg">{player.winRate}</p>
                     </div>
-                    <div className="text-right">
-                      <p className="text-gray-500 text-xs uppercase">Main Hero</p>
-                      <p className="text-white font-bold">{player.favHero}</p>
+                    <div className="text-center border-l border-r border-white/10">
+                      <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">KDA</p>
+                      <p className="text-white font-black text-lg">{player.kda}</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-1">Hero</p>
+                      <p className="text-white font-bold text-sm truncate px-1">{player.favHero}</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="h-1 w-full bg-gray-800 group-hover:bg-[#F3B229] transition-colors duration-300" />
+              
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-0 h-1 bg-[#F3B229] transition-all duration-500 w-0 group-hover:w-full z-30" />
             </motion.div>
           ))}
         </div>
       </section>
 
-      
-      <section className="py-20 px-4 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tight mb-12 text-center" style={{ fontFamily: "'Oswald', sans-serif" }}>
-            Recent <span className="text-[#F3B229]">Matches</span>
-          </h2>
+      {/* MATCHES SECTION */}
+      <section className="py-24 px-4 bg-gradient-to-b from-[#030303] to-[#0a0a0a] relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#F3B229]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+        
+        <div className="max-w-5xl mx-auto relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 mb-4">
+              <Zap size={20} className="text-[#F3B229]" />
+              <span className="text-gray-400 font-bold tracking-widest uppercase text-sm">Battle Log</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter" style={{ fontFamily: "'Oswald', sans-serif" }}>
+              Recent <span className="text-[#F3B229]">Matches</span>
+            </h2>
+          </motion.div>
 
-          <div className="space-y-4 max-w-4xl mx-auto">
+          <div className="space-y-4">
             {matches.map((match, idx) => (
               <motion.div
                 key={match.id}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-[#111111] border border-gray-800 hover:border-[#F3B229]/50 p-6 flex flex-col md:flex-row items-center justify-between gap-6 transition-all group"
+                transition={{ delay: idx * 0.15, duration: 0.5 }}
+                className="group relative bg-[#111] border border-white/5 hover:border-[#F3B229]/30 rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 transition-all hover:bg-[#151515] hover:shadow-2xl overflow-hidden"
               >
-                <div className="text-gray-400 text-sm font-bold tracking-wider">
-                  {match.date}
+                {/* Hover gradient effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F3B229]/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-0" />
+
+                <div className="relative z-10 w-full md:w-1/4 text-center md:text-left flex flex-col items-center md:items-start border-b md:border-b-0 border-white/10 pb-4 md:pb-0">
+                  <span className="text-gray-400 text-sm font-bold tracking-widest mb-1">
+                    {match.date}
+                  </span>
+                  <span className="text-[#F3B229] text-xs font-bold uppercase tracking-wider">
+                    {match.tournament}
+                  </span>
                 </div>
 
-                <div className="flex-1 flex items-center justify-center gap-4 md:gap-8 w-full">
-                  <div className="text-right flex-1">
-                    <h4 className="font-black text-xl md:text-2xl uppercase group-hover:text-[#F3B229] transition-colors" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                <div className="relative z-10 flex-1 flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
+                  <div className="text-center sm:text-right flex-1 w-full sm:w-auto">
+                    <h4 className="font-black text-2xl md:text-3xl uppercase tracking-tight text-white group-hover:text-[#F3B229] transition-colors" style={{ fontFamily: "'Oswald', sans-serif" }}>
                       {match.teamA}
                     </h4>
                   </div>
 
-                  <div className="bg-[#1a1a1a] px-6 py-2 rounded border border-gray-800">
-                    <span className="font-black text-2xl tracking-widest text-[#F3B229]">
-                      {match.score}
+                  <div className="bg-black/50 backdrop-blur-sm px-6 py-3 rounded-lg border border-white/10 shadow-inner flex-shrink-0">
+                    <span className="font-black text-3xl md:text-4xl tracking-widest text-white">
+                      {match.score.split(' - ')[0]}<span className="text-[#F3B229] mx-2">-</span>{match.score.split(' - ')[1]}
                     </span>
                   </div>
 
-                  <div className="text-left flex-1">
-                    <h4 className="font-black text-xl md:text-2xl uppercase text-gray-300" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                  <div className="text-center sm:text-left flex-1 w-full sm:w-auto">
+                    <h4 className="font-black text-2xl md:text-3xl uppercase tracking-tight text-gray-400 group-hover:text-white transition-colors" style={{ fontFamily: "'Oswald', sans-serif" }}>
                       {match.teamB}
                     </h4>
                   </div>
                 </div>
 
-                <div className={`text-sm font-bold tracking-widest px-4 py-1 rounded ${
-                  match.status === 'VICTORY' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
-                }`}>
-                  {match.status}
+                <div className="relative z-10 w-full md:w-1/4 flex justify-center md:justify-end mt-4 md:mt-0">
+                  <div className={`flex items-center gap-2 px-5 py-2 rounded-full border ${
+                    match.status === 'VICTORY' 
+                      ? 'bg-green-500/10 border-green-500/30 text-green-400' 
+                      : 'bg-red-500/10 border-red-500/30 text-red-400'
+                  }`}>
+                    {match.status === 'VICTORY' ? <Trophy size={16} /> : <Shield size={16} />}
+                    <span className="text-sm font-black tracking-widest uppercase">
+                      {match.status}
+                    </span>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
+          
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <button className="text-gray-400 hover:text-white font-bold tracking-widest uppercase text-sm border-b border-gray-600 hover:border-white pb-1 transition-colors">
+              View Complete Schedule
+            </button>
+          </motion.div>
         </div>
       </section>
 
-      
-      <section className="py-24 relative overflow-hidden bg-[#F3B229]">
-        <div 
-          className="absolute inset-0 bg-[#050505] z-0 transform -translate-y-20"
-          style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0% 100%)' }} 
-        />
+      {/* CTA SECTION */}
+      <section className="relative py-32 overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[#F3B229] mix-blend-multiply opacity-90 z-10" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1920&h=1080')] bg-cover bg-center grayscale" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#030303] to-transparent z-20" />
+        </div>
         
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
-          <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-6 text-black" style={{ fontFamily: "'Oswald', sans-serif" }}>
-            Ready to <span className="text-white">Prove Yourself?</span>
-          </h2>
-          <p className="text-gray-400 md:text-gray-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-bold">
-            The arena awaits. Join our community Discord, participate in scrims, and maybe you'll be the next legend on our roster.
-          </p>
-          <button className="bg-black hover:bg-gray-900 text-[#F3B229] font-black py-5 px-10 text-xl uppercase tracking-widest transition-all duration-300 hover:scale-105 shadow-2xl">
-            Join Discord Now
-          </button>
+        <div className="relative z-30 text-center px-4 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <Star className="w-16 h-16 text-white mx-auto mb-8 animate-[spin_10s_linear_infinite] opacity-50" />
+            <h2 className="text-6xl md:text-8xl font-black uppercase italic tracking-tighter mb-6 text-black drop-shadow-xl" style={{ fontFamily: "'Oswald', sans-serif" }}>
+              Ready to <span className="text-white">Prove Yourself?</span>
+            </h2>
+            <p className="text-black/80 md:text-white/90 text-lg md:text-2xl mb-12 max-w-2xl mx-auto font-bold leading-relaxed drop-shadow-md">
+              The arena awaits. Join our community Discord, participate in scrims, and maybe you'll be the next legend on our roster.
+            </p>
+            
+            <button className="group relative inline-flex items-center justify-center bg-black text-[#F3B229] font-black py-5 px-12 text-xl uppercase tracking-widest overflow-hidden skew-x-[-10deg] shadow-2xl hover:shadow-[0_0_40px_rgba(0,0,0,0.5)] transition-shadow">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+              <span className="skew-x-[10deg] flex items-center gap-3">
+                Join Discord Now <ChevronRight className="group-hover:translate-x-2 transition-transform" />
+              </span>
+            </button>
+          </motion.div>
         </div>
       </section>
 
-      <footer>
-        <Footer/>
-      </footer>
+      {/* CSS for custom animations */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes shimmer {
+          100% { transform: translateX(100%); }
+        }
+      `}} />
     </div>
   );
 };
