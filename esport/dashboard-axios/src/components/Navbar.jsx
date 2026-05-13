@@ -50,7 +50,7 @@ function Navbar() {
         </div>
         
         <a href="#">ABOUT</a>
-        <a href="#">MATCH</a>
+        <Link to="/Match">MATCH</Link>
         <a href="#">PARTNER</a>
         <a href="#">CREATOR</a>
         <a href="#">NEWS</a>
