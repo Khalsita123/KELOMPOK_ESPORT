@@ -51,9 +51,9 @@ function Navbar() {
         
         <a href="#">ABOUT</a>
         <a href="#">MATCH</a>
-        <Link to="/partner">PARTNER</Link>
-        <a href="#">CREATOR</a>
         <Link to="/News">NEWS</Link>
+        <Link to="/creator">CREATOR</Link>
+        <Link to="/partner">PARTNER</Link>
         <Link to="/Store">STORE</Link>
       </div>
 
