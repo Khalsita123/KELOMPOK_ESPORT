@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Home from "./pages/home/home";
 import Footer from "./components/Footer";
-import Store from "./pages/Store/Store"; 
+import Store from "./pages/Store/Store";
 import Creator from "./pages/creator/creator";
 import Dit from "./pages/creator/dit";
 import Bri from "./pages/creator/bri";
@@ -23,13 +23,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Store" element={<Store />} />
-<<<<<<< HEAD
           <Route path="/creator" element={<Creator />} />
           <Route path="/tzy" element={<Tzy />} />
           <Route path="/dit" element={<Dit />} />
           <Route path="/bri" element={<Bri />} />
-=======
->>>>>>> 04df137b3965291d1fb8d6f147847c0a7769ce72
         </Routes>
       </main>
 
