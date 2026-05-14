@@ -19,7 +19,13 @@ const rosterData = [
       name: "M416",
       attachments: ["Compensator AR", "Half Grip", "Extended QD Mag", "Tactical Stock", "Red Dot Sight"],
       proTip: "Tahan recoil pakai kombinasi half grip dan compensator, trust the spray!"
-    }
+    },
+    achievements: [
+      "3x PUBG Regional Champion",
+      "MVP 2023 Season",
+      "Headshot Master",
+      "Clutch King"
+    ]
   },
   {
     id: 2,
@@ -35,7 +41,13 @@ const rosterData = [
       name: "UMP45",
       attachments: ["Suppressor SMG", "Laser Sight", "Extended QD Mag", "Red Dot Sight"],
       proTip: "Laser sight wajib buat close combat, aim auto nempel ke musuh."
-    }
+    },
+    achievements: [
+      "Rush Legend",
+      "Fastest Kill Record",
+      "2x Tournament Winner",
+      "Combat Master"
+    ]
   },
   {
     id: 3,
@@ -51,7 +63,13 @@ const rosterData = [
       name: "Mini14",
       attachments: ["Compensator Sniper", "Extended QD Mag", "8x Scope"],
       proTip: "Spam tapping dari jauh buat cover rusher yang lagi open fire."
-    }
+    },
+    achievements: [
+      "Support Excellence",
+      "Teamwork Award",
+      "Tactical Genius",
+      "Consistent Performer"
+    ]
   },
   {
     id: 4,
@@ -67,7 +85,13 @@ const rosterData = [
       name: "Kar98k",
       attachments: ["Suppressor Sniper", "Bullet Loops", "8x Scope"],
       proTip: "Satu peluru, satu nyawa. Selalu incar kepala saat musuh sedang diam looting."
-    }
+    },
+    achievements: [
+      "Precision Master",
+      "Ace Tournament Mvp",
+      "One Tap Legend",
+      "Marksman Champion"
+    ]
   }
 ];
 
@@ -191,24 +215,41 @@ export default function Pubg() {
                   </div>
 
                   {/* Attachments & Pro Tip */}
-                  <div className="flex-1 flex flex-col justify-center">
-                    <p className="text-gray-400 text-sm font-semibold mb-3 uppercase">Loadout Recommendation</p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {player.weapon.attachments.map((item, index) => (
-                        <span 
-                          key={index} 
-                          className="px-3 py-1.5 bg-gray-950 text-orange-100 text-xs font-bold rounded-sm border border-gray-700 shadow-sm"
-                        >
-                          {item}
-                        </span>
-                      ))}
+                  <div className="flex-1 flex flex-col justify-between">
+                    <div>
+                      <p className="text-gray-400 text-sm font-semibold mb-3 uppercase">Loadout Recommendation</p>
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {player.weapon.attachments.map((item, index) => (
+                          <span 
+                            key={index} 
+                            className="px-3 py-1.5 bg-gray-950 text-orange-100 text-xs font-bold rounded-sm border border-gray-700 shadow-sm"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      <div className="relative p-4 bg-orange-500/10 border-l-4 border-orange-500 rounded-r-md">
+                        <p className="text-sm md:text-base text-gray-300 italic pr-8">
+                          "{player.weapon.proTip}"
+                        </p>
+                        <p className="text-xs text-orange-400 font-bold mt-2 uppercase tracking-wide">— {player.ign}'s Tip</p>
+                      </div>
                     </div>
-                    
-                    <div className="relative p-4 bg-orange-500/10 border-l-4 border-orange-500 rounded-r-md">
-                      <p className="text-sm md:text-base text-gray-300 italic pr-8">
-                        "{player.weapon.proTip}"
-                      </p>
-                      <p className="text-xs text-orange-400 font-bold mt-2 uppercase tracking-wide">— {player.ign}'s Tip</p>
+
+                    {/* Achievements Section */}
+                    <div className="mt-6 pt-6 border-t border-gray-700">
+                      <p className="text-gray-400 text-sm font-semibold mb-3 uppercase">Achievements</p>
+                      <div className="grid grid-cols-2 gap-2">
+                        {player.achievements.map((achievement, index) => (
+                          <div 
+                            key={index} 
+                            className="px-3 py-2 bg-gradient-to-br from-orange-500/20 to-orange-600/10 text-orange-200 text-xs font-bold rounded-sm border border-orange-500/40 shadow-sm text-center"
+                          >
+                            🏆 {achievement}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
