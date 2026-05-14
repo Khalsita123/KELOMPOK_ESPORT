@@ -237,10 +237,10 @@ export default function News() {
     <div className="news-page">
       {/* Hero Header */}
       <section className="news-hero">
-        <div className="news-hero-tag">Latest Updates</div>
         <h1 className="news-hero-title">News</h1>
+        <div className="news-hero-tag">Latest Updates</div>
         <p className="news-hero-desc">
-          Keep up with the latest Nova Esport news, tournaments, roster changes, and media features.
+          Keep up with the latest HS Esport news, tournaments, roster changes, and media features.
         </p>
       </section>
 
