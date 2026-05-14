@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/home/home";
 import Footer from "./components/Footer";
 import Store from "./pages/Store/Store";
+import Pubg from "./pages/pubg/pubg";
 import Creator from "./pages/creator/creator";
 import Dit from "./pages/creator/dit";
 import Bri from "./pages/creator/bri";
@@ -27,6 +28,7 @@ function App() {
           <Route path="/tzy" element={<Tzy />} />
           <Route path="/dit" element={<Dit />} />
           <Route path="/bri" element={<Bri />} />
+          <Route path="/pubg" element={<Pubg />} />
         </Routes>
       </main>
 
