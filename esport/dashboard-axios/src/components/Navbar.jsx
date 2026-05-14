@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import logoEsport from '../assets/logo_esport1.png';
-import { User, Menu,} from 'lucide-react';
+import { User, Menu } from 'lucide-react';
 
 function Navbar() {
   useEffect(() => {
@@ -38,6 +38,21 @@ function Navbar() {
         <div className="dropdown">
           <Link className="droplist" to="/droplist">DIVISIONS</Link>
           <div className="dropdown-content">
+            <Link className="pubg" to="/pubg">PUBG</Link>
+            <Link className="ff" to="/freefire">FREE FIRE</Link>
+            <Link className="ml" to="/mobile-legend">MOBILE LEGEND</Link>
+            <Link className="hok" to="/honor-of-king">HONOR OF KING</Link>
+            <Link className="valo" to="/valorant">VALORANT</Link>
+            <Link className="dota2" to="/dota2">DOTA 2</Link>
+            <Link className="csgo" to="/csgo">CSGO</Link>
+            <Link className="point" to="/point-blank">POINT BLANK</Link>
+          </div>
+        </div>
+
+        <Link to="/">ABOUT</Link>
+        <Link to="/">MATCH</Link>
+        <Link to="/">PARTNER</Link>
+        <Link to="/creator">CREATOR</Link>
             <a className="pubg" href="">PUBG</a>
             <a className="ff" href="">FREE FIRE</a>
             <Link className="ml" to="/mlbb">MOBILE LEGEND</Link>
@@ -55,13 +70,15 @@ function Navbar() {
         <a href="#">CREATOR</a>
         <Link to="/News">NEWS</Link>
         <Link to="/Store">STORE</Link>
+        <Link to="/">NEWS</Link>
       </div>
 
       <div className="nav-extra">
+        <a href="#" id="user"><User size={20} /></a>
+        <a href="#" id="menu"><Menu size={20} /></a>
         <Link to="/User" id="user"><User size={20} /></Link>
         <Link to="/Menu" id="menu"><Menu size={20} /></Link>
       </div>
-      
     </nav>
   );
 }
