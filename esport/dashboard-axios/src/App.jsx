@@ -3,9 +3,16 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Home from "./pages/home/home";
 import Footer from "./components/Footer";
+import Store from "./pages/Store/Store"; 
+import News from "./pages/News/News";
+import Valorant from "./pages/Valorant/Valorant";
 import Store from "./pages/Store/Store";
 import Match from "./pages/home/Match";
 import Point from "./pages/home/Point";
+
+import MLBBCommunity from "./components/MLBBCommunity";
+import CSGOCommunity from "./components/CSGOCommunity";
+
 
 function App() {
   return (
@@ -21,8 +28,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Store" element={<Store />} />
-          <Route path="/Match" element={<Match />} />
-          <Route path="/Point" element={<Point />} />
+          <Route path="/News" element={<News />} />
+          <Route path="/Valorant" element={<Valorant />} />
+          <Route path="/mlbb" element={<MLBBCommunity />} />
+          <Route path="/csgo" element={<CSGOCommunity />} />
         </Routes>
       </main>
 
