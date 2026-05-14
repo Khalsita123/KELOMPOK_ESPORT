@@ -45,12 +45,12 @@ function Navbar() {
             <a className="valo" href="">VALORANT</a>
             <a className="dota2" href="">DOTA 2</a>
             <a className="csgo" href="">CSGO</a>
-            <a className="point" href="">POINT BLANK</a>
+            <Link className="point" to="/Point">POINT BLANK</Link>
           </div>
         </div>
         
         <a href="#">ABOUT</a>
-        <a href="#">MATCH</a>
+        <Link to="/Match">MATCH</Link>
         <a href="#">PARTNER</a>
         <a href="#">CREATOR</a>
         <a href="#">NEWS</a>

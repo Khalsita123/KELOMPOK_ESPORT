@@ -89,7 +89,7 @@ function Store() {
               <div className="product-card h-100 bg-transparent border-0" style={{ cursor: 'pointer' }}>
                 <div className="position-relative overflow-hidden mb-3 bg-dark" style={{ aspectRatio: '4/5' }}>
                   {product.isNew && (
-                    <span className="position-absolute top-0 start-0 bg-white text-black px-3 py-1 small fw-bold z-3 m-3">
+                    <span className="position-absolute top-0 inset-s-0 bg-white text-black px-3 py-1 small fw-bold z-3 m-3">
                       NEW
                     </span>
                   )}
