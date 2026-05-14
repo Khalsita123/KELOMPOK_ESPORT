@@ -107,14 +107,14 @@ function Store() {
   const cartItemsCount = cart.reduce((count, item) => count + item.quantity, 0);
 
   return (
-    <section id="store" className="store-section py-5 text-white position-relative" style={{ backgroundColor: '#050505', minHeight: '100vh', overflowX: 'hidden' }}>
+    <section id="store" className="store-section pb-5 text-white position-relative" style={{ backgroundColor: '#050505', minHeight: '100vh', overflowX: 'hidden', paddingTop: '1rem' }}>
       <div className="container">
         
         {/* Header Section */}
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 gap-4">
           <div>
-            <p className="text-secondary fw-bold mb-1 tracking-widest" style={{ fontSize: '0.8rem' }}>OFFICIAL MERCHANDISE</p>
             <h1 className="display-3 fw-bold m-0" style={{ letterSpacing: '-2px' }}>HS STORE</h1>
+            <p className="text-secondary fw-bold mb-1 tracking-widest" style={{ fontSize: '0.8rem' }}>OFFICIAL MERCHANDISE</p>
           </div>
           <div className="d-flex gap-2 align-items-center">
             
