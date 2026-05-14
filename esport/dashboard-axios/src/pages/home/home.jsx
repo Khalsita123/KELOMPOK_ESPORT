@@ -198,6 +198,8 @@ function Match() {
   const enemyTeams = ["RRQ", "EVOS", "ONIC", "ALTER EGO", "BTR", "GEEK FAM", "AURA", "DEWA UNITED", "BOOM", "TALON"];
 
   useEffect(() => {
+    let cancelled = false;
+
     axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => {
@@ -231,6 +233,10 @@ function Match() {
         console.log(err);
         setLoading(false);
       });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (loading) {
