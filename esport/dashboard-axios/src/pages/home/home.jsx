@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import aboutImg from '../../assets/logo_esport1.png';
+import pubgCharImg from '../../assets/images/pubg-char.jpg';
 
 // ============ HERO SECTION ============
 function Hero() {
@@ -124,7 +125,7 @@ const games = [
     type: "mobile",
     accent: "#c8a000",
     bg: "linear-gradient(160deg, #1c2d4a, #0d1a30)",
-    charImg: "/src/assets/images/pubg-char.jpg",
+    charImg: pubgCharImg,
   },
   {
     id: "freefire",
@@ -253,7 +254,9 @@ function Devision() {
               </div>
             </div>
 
-            <img className="dv-char" src={game.charImg} alt={game.name} />
+            {game.charImg ? (
+              <img className="dv-char" src={game.charImg} alt={game.name} />
+            ) : null}
 
             <div className="dv-bottom">
               <button
@@ -276,12 +279,25 @@ function Match() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let cancelled = false;
+
     axios
       .get("https://jsonplaceholder.typicode.com/photos?_limit=10")
       .then((res) => {
+        if (cancelled) return;
         setMatches(res.data);
+      })
+      .catch((err) => {
+        console.error("Failed to load matches:", err);
+      })
+      .finally(() => {
+        if (cancelled) return;
         setLoading(false);
       });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (loading) {

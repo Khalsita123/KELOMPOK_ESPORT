@@ -34,26 +34,26 @@ function Navbar() {
       </div>
 
       <div className="navi">
-        <a href="#">HOME</a>
+        <Link to="/">HOME</Link>
         <div className="dropdown">
           <a className="droplist">DIVISIONS</a>
           <div className="dropdown-content">
-            <a className="pubg" href="">PUBG</a>
-            <a className="ff" href="">FREE FIRE</a>
-            <a className="ml" href="">MOBILE LEGEND</a>
-            <a className="hok" href="">HONOR OF KING</a>
-            <a className="valo" href="">VALORANT</a>
-            <a className="dota2" href="">DOTA 2</a>
-            <a className="csgo" href="">CSGO</a>
-            <a className="point" href="">POINT BLANK</a>
+            <Link className="pubg" to="/pubg">PUBG</Link>
+            <Link className="ff" to="/freefire">FREE FIRE</Link>
+            <Link className="ml" to="/mobile-legend">MOBILE LEGEND</Link>
+            <Link className="hok" to="/honor-of-king">HONOR OF KING</Link>
+            <Link className="valo" to="/valorant">VALORANT</Link>
+            <Link className="dota2" to="/dota2">DOTA 2</Link>
+            <Link className="csgo" to="/csgo">CSGO</Link>
+            <Link className="point" to="/point-blank">POINT BLANK</Link>
           </div>
         </div>
-        <a href="#">ABOUT</a>
-        <a href="#">MATCH</a>
-        <a href="#">PARTNER</a>
-        <a href="#">CREATOR</a>
-        <a href="#">NEWS</a>
-        <Link to="/Store">STORE</Link>
+
+        <Link to="/">ABOUT</Link>
+        <Link to="/">MATCH</Link>
+        <Link to="/">PARTNER</Link>
+        <Link to="/creator">CREATOR</Link>
+        <Link to="/">NEWS</Link>
       </div>
 
       <div className="nav-extra">
