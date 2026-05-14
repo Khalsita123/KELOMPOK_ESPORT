@@ -2,19 +2,23 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../style/pubg.css";
 import banner from "../../assets/pubgbanner.png";
+import uppi from "../../assets/Uppi.png";
+import brian from "../../assets/Brian.png";
+import dit from "../../assets/dit2.png";
+import tzy from "../../assets/tzy.png";
 
 // --- 1. DATA DUMMY PEMAIN ---
 const rosterData = [
   {
     id: 1,
-    ign: "'Spectre'",
+    ign: "'UPI_SPECTRE'",
     role: "IGL",
-    realName: "Ahmad Fauzi",
+    realName: "Fahrizal Rustam",
     age: 22,
-    birthPlace: "Jakarta",
+    birthPlace: "Sorong",
     nationality: "Indonesia",
     ig: "hs_spectre",
-    photo: "https://via.placeholder.com/250x300/1f2937/f97316?text=Foto+Spectre",
+    photo: uppi,
     weapon: {
       name: "M416",
       attachments: ["Compensator AR", "Half Grip", "Extended QD Mag", "Tactical Stock", "Red Dot Sight"],
@@ -29,14 +33,14 @@ const rosterData = [
   },
   {
     id: 2,
-    ign: "'Axe'",
+    ign: "'AXE",
     role: "RUSHER",
     realName: "Budi Santoso",
     age: 20,
     birthPlace: "Batam",
     nationality: "Indonesia",
     ig: "hs_axe",
-    photo: "https://via.placeholder.com/250x300/1f2937/f97316?text=Foto+Axe",
+    photo: brian,
     weapon: {
       name: "UMP45",
       attachments: ["Suppressor SMG", "Laser Sight", "Extended QD Mag", "Red Dot Sight"],
@@ -58,7 +62,7 @@ const rosterData = [
     birthPlace: "Bandung",
     nationality: "Indonesia",
     ig: "hs_kira",
-    photo: "https://via.placeholder.com/250x300/1f2937/f97316?text=Foto+Kira",
+    photo: dit,
     weapon: {
       name: "Mini14",
       attachments: ["Compensator Sniper", "Extended QD Mag", "8x Scope"],
@@ -80,7 +84,7 @@ const rosterData = [
     birthPlace: "Surabaya",
     nationality: "Indonesia",
     ig: "hs_echo",
-    photo: "https://via.placeholder.com/250x300/1f2937/f97316?text=Foto+Echo",
+    photo: tzy,
     weapon: {
       name: "Kar98k",
       attachments: ["Suppressor Sniper", "Bullet Loops", "8x Scope"],
@@ -107,38 +111,28 @@ export default function Pubg() {
       
       {/* --- HERO SECTION / BANNER BACKGROUND --- */}
       {/* Menggunakan absolute & z-0 agar teks dan konten bisa berada di atasnya */}
-      <section className="absolute top-0 left-0 w-full h-[620px] md:h-[780px] overflow-hidden z-0">
+      <section className="absolute top-10 left-0 w-full h-[550px] md:h-[700px] overflow-hidden z-0 flex items-center justify-center">
         <img
           src={banner}
           alt="PUBG Banner"
-          // opacity-30 membuat gambar meredup/gelap
-          className="absolute inset-0 w-full h-full object-cover object-top opacity-30"
+          className="absolute inset-0 w-full h-full object-cover object-[center_18%] opacity-85 brightness-110"
           aria-hidden="true"
         />
-        {/* Gradasi dari transparan di atas, perlahan ke hitam pekat di bagian bawah agar menyatu dengan konten */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black" />
+        {/* Gradasi hitam agar banner menyatu ke area bawah */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/35 to-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
+        
+        {/* Header Text Overlay - Centered in Hero */}
+        <div className="relative z-10 text-center" />
       </section>
 
       {/* --- KONTEN UTAMA --- */}
       {/* relative & z-10 memastikan konten ini berada di atas banner background */}
-      <div className="relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 pt-[630px] md:pt-[780px] pb-20 px-4 sm:px-6 lg:px-8">
         
-        {/* Header Teks */}
-        <div className="max-w-5xl mx-auto text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-black italic tracking-widest text-orange-500 uppercase drop-shadow-lg">
-            Hiling Strike
-          </h1>
-          <h2 className="text-xl md:text-3xl font-bold tracking-widest text-white mt-2 uppercase border-b-2 border-orange-500 inline-block pb-2">
-            PUBG Division
-          </h2>
-          <p className="text-gray-400 mt-6 text-sm md:text-base max-w-2xl mx-auto">
-            Kenali roster andalan kami. Klik kartu pemain untuk melihat informasi detail, 
-            rekomendasi senjata, dan loadout mematikan mereka di medan pertempuran.
-          </p>
-        </div>
 
         {/* Kontainer Daftar Pemain */}
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="w-full space-y-6">
           {rosterData.map((player) => (
             <div 
               key={player.id} 
