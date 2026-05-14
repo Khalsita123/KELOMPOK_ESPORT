@@ -42,7 +42,7 @@ function Navbar() {
             <a className="ff" href="">FREE FIRE</a>
             <Link className="ml" to="/mlbb">MOBILE LEGEND</Link>
             <a className="hok" href="">HONOR OF KING</a>
-            <a className="valo" href="">VALORANT</a>
+            <Link to="/Valorant" className="valo">VALORANT</Link>
             <a className="dota2" href="">DOTA 2</a>
             <Link className="csgo" to="/csgo">CSGO</Link>
             <a className="point" href="">POINT BLANK</a>
@@ -53,7 +53,7 @@ function Navbar() {
         <a href="#">MATCH</a>
         <Link to="/partner">PARTNER</Link>
         <a href="#">CREATOR</a>
-        <a href="#">NEWS</a>
+        <Link to="/News">NEWS</Link>
         <Link to="/Store">STORE</Link>
       </div>
 
