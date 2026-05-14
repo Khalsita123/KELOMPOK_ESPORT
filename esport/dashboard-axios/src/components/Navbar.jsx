@@ -36,31 +36,30 @@ function Navbar() {
       <div className="navi">
         <Link to="/">HOME</Link>
         <div className="dropdown">
-          <a className="droplist">DIVISIONS</a>
+          <Link className="droplist" to="/droplist">DIVISIONS</Link>
           <div className="dropdown-content">
-            <a className="pubg" href="">PUBG</a>
-            <a className="ff" href="">FREE FIRE</a>
-            <a className="ml" href="">MOBILE LEGEND</a>
-            <a className="hok" href="">HONOR OF KING</a>
-            <a className="valo" href="">VALORANT</a>
-            <a className="dota2" href="">DOTA 2</a>
-            <a className="csgo" href="">CSGO</a>
-            <Link className="point" to="/Point">POINT BLANK</Link>
+            <Link className="pubg" to="/pubg">PUBG</Link>
+            <Link className="ff" to="/ff">FREE FIRE</Link>
+            <Link className="ml" to="/ml">MOBILE LEGEND</Link>
+            <Link className="hok" to="/hok">HONOR OF KING</Link>
+            <Link className="dota" to="/dota">DOTA</Link>
+            <Link className="valo" to="/valo">VALORANT</Link>
+            <Link className="csgo" to="/csgo">CSGO</Link>
+            <Link className="point" to="/point">POINT BLANK</Link>
           </div>
         </div>
         
-        <a href="#">ABOUT</a>
+        <Link to="/About">ABOUT</Link>
         <Link to="/Match">MATCH</Link>
-        <a href="#">PARTNER</a>
-        <a href="#">CREATOR</a>
-        <a href="#">NEWS</a>
+        <Link to="/Partner">PARTNER</Link>
+        <Link to="/Creator">CREATOR</Link>
+        <Link to="/News">NEWS</Link>
         <Link to="/Store">STORE</Link>
       </div>
 
       <div className="nav-extra">
-        <a href="#" id="user"><User size={20} /></a>
-        <a href="#" id="menu"><Menu size={20} /></a>
-        
+        <Link to="/User" id="user"><User size={20} /></Link>
+        <Link to="/Menu" id="menu"><Menu size={20} /></Link>
       </div>
       
     </nav>
