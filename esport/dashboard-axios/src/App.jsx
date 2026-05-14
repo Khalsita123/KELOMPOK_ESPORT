@@ -23,10 +23,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Store" element={<Store />} />
+<<<<<<< HEAD
           <Route path="/creator" element={<Creator />} />
           <Route path="/tzy" element={<Tzy />} />
           <Route path="/dit" element={<Dit />} />
           <Route path="/bri" element={<Bri />} />
+=======
+>>>>>>> 04df137b3965291d1fb8d6f147847c0a7769ce72
         </Routes>
       </main>
 

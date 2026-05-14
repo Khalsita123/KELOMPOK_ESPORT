@@ -48,12 +48,22 @@ function Navbar() {
             <Link className="point" to="/point-blank">POINT BLANK</Link>
           </div>
         </div>
+<<<<<<< HEAD
 
         <Link to="/">ABOUT</Link>
         <Link to="/">MATCH</Link>
         <Link to="/">PARTNER</Link>
         <Link to="/creator">CREATOR</Link>
         <Link to="/">NEWS</Link>
+=======
+        
+        <a href="#">ABOUT</a>
+        <a href="#">MATCH</a>
+        <a href="#">PARTNER</a>
+        <a href="#">CREATOR</a>
+        <a href="#">NEWS</a>
+        <Link to="/Store">STORE</Link>
+>>>>>>> 04df137b3965291d1fb8d6f147847c0a7769ce72
       </div>
 
       <div className="nav-extra">
