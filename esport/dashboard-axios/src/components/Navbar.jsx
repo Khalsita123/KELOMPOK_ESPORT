@@ -38,22 +38,22 @@ function Navbar() {
         <div className="dropdown">
           <Link className="droplist" to="/droplist">DIVISIONS</Link>
           <div className="dropdown-content">
-            <Link className="pubg" to="/pubg">PUBG</Link>
-            <Link className="ff" to="/ff">FREE FIRE</Link>
-            <Link className="ml" to="/ml">MOBILE LEGEND</Link>
-            <Link className="hok" to="/hok">HONOR OF KING</Link>
-            <Link className="dota" to="/dota">DOTA</Link>
-            <Link className="valo" to="/valo">VALORANT</Link>
+            <a className="pubg" href="">PUBG</a>
+            <a className="ff" href="">FREE FIRE</a>
+            <Link className="ml" to="/mlbb">MOBILE LEGEND</Link>
+            <a className="hok" href="">HONOR OF KING</a>
+            <a className="valo" href="">VALORANT</a>
+            <a className="dota2" href="">DOTA 2</a>
             <Link className="csgo" to="/csgo">CSGO</Link>
-            <Link className="point" to="/point">POINT BLANK</Link>
+            <a className="point" href="">POINT BLANK</a>
           </div>
         </div>
         
-        <Link to="/About">ABOUT</Link>
-        <Link to="/Match">MATCH</Link>
-        <Link to="/Partner">PARTNER</Link>
-        <Link to="/Creator">CREATOR</Link>
-        <Link to="/News">NEWS</Link>
+        <a href="#">ABOUT</a>
+        <a href="#">MATCH</a>
+        <Link to="/partner">PARTNER</Link>
+        <a href="#">CREATOR</a>
+        <a href="#">NEWS</a>
         <Link to="/Store">STORE</Link>
       </div>
 

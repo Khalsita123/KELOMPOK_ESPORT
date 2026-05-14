@@ -7,6 +7,10 @@ import Store from "./pages/Store/Store";
 import Match from "./pages/home/Match";
 import Point from "./pages/home/Point";
 
+import MLBBCommunity from "./components/MLBBCommunity";
+import CSGOCommunity from "./components/CSGOCommunity";
+
+
 function App() {
   return (
     <Router>
@@ -21,8 +25,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Store" element={<Store />} />
-          <Route path="/Match" element={<Match />} />
-          <Route path="/Point" element={<Point />} />
+          <Route path="/mlbb" element={<MLBBCommunity />} />
+          <Route path="/csgo" element={<CSGOCommunity />} />
         </Routes>
       </main>
 
