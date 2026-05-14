@@ -113,7 +113,7 @@ function Store() {
         {/* Header Section */}
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 gap-4">
           <div>
-            <h1 className="display-3 fw-bold m-0" style={{ letterSpacing: '-2px' }}>HS STORE</h1>
+            <h1 className="display-4 fw-bold m-0" style={{ letterSpacing: '-2px' }}>HS STORE</h1>
             <p className="text-secondary fw-bold mb-1 tracking-widest" style={{ fontSize: '0.8rem' }}>OFFICIAL MERCHANDISE</p>
           </div>
           <div className="d-flex gap-2 align-items-center">
