@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&display=swap');
+
 body{
   background:#0b0b0b;
   overflow-x: clip;
@@ -635,7 +637,6 @@ nav .nav-extra a:hover {
 /* ========================
    DEVISION
 ======================== */
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&display=swap');
 
 .dv-section {
   width: 100%;

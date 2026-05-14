@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/home/home";
 import Footer from "./components/Footer";
 import Store from "./pages/Store/Store"; 
+import News from "./pages/News/News";
+import Valorant from "./pages/Valorant/Valorant";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Store" element={<Store />} />
+          <Route path="/News" element={<News />} />
+          <Route path="/Valorant" element={<Valorant />} />
         </Routes>
       </main>
 
