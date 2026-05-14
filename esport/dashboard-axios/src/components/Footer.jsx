@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logoEsport from '../assets/logo_esport1.png';
 
 function Footer() {
@@ -26,7 +27,7 @@ function Footer() {
           <a href="#">FREE FIRE</a>
           <a href="#">VALORANT</a>
           <a href="#">Honor of Kings</a>
-          <a href="#">Point Blank</a>
+          <Link to="/Point">Point Blank</Link>
           <a href="#">Counter Strike</a>
           <a href="#">Dota2</a>
         </div>

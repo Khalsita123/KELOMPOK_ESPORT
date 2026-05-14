@@ -45,7 +45,7 @@ function Navbar() {
             <a className="valo" href="">VALORANT</a>
             <a className="dota2" href="">DOTA 2</a>
             <a className="csgo" href="">CSGO</a>
-            <a className="point" href="">POINT BLANK</a>
+            <Link className="point" to="/Point">POINT BLANK</Link>
           </div>
         </div>
         
