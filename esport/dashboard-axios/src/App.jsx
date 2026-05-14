@@ -3,7 +3,9 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Home from "./pages/home/home";
 import Footer from "./components/Footer";
-import Store from "./pages/Store/Store"; 
+import Store from "./pages/Store/Store";
+import Match from "./pages/home/Match";
+import Point from "./pages/home/Point";
 
 import MLBBCommunity from "./components/MLBBCommunity";
 import CSGOCommunity from "./components/CSGOCommunity";

@@ -36,7 +36,7 @@ function Navbar() {
       <div className="navi">
         <Link to="/">HOME</Link>
         <div className="dropdown">
-          <a className="droplist">DIVISIONS</a>
+          <Link className="droplist" to="/droplist">DIVISIONS</Link>
           <div className="dropdown-content">
             <a className="pubg" href="">PUBG</a>
             <a className="ff" href="">FREE FIRE</a>
@@ -58,9 +58,8 @@ function Navbar() {
       </div>
 
       <div className="nav-extra">
-        <a href="#" id="user"><User size={20} /></a>
-        <a href="#" id="menu"><Menu size={20} /></a>
-        
+        <Link to="/User" id="user"><User size={20} /></Link>
+        <Link to="/Menu" id="menu"><Menu size={20} /></Link>
       </div>
       
     </nav>
