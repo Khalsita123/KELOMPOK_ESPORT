@@ -9,6 +9,16 @@ import Creator from "./pages/creator/creator";
 import Dit from "./pages/creator/dit";
 import Bri from "./pages/creator/bri";
 import Tzy from "./pages/creator/tzy";
+import Store from "./pages/Store/Store"; 
+import News from "./pages/News/News";
+import Valorant from "./pages/Valorant/Valorant";
+import Store from "./pages/Store/Store";
+import Match from "./pages/home/Match";
+import Point from "./pages/home/Point";
+
+import MLBBCommunity from "./components/MLBBCommunity";
+import CSGOCommunity from "./components/CSGOCommunity";
+
 
 function App() {
   return (
@@ -29,6 +39,10 @@ function App() {
           <Route path="/dit" element={<Dit />} />
           <Route path="/bri" element={<Bri />} />
           <Route path="/pubg" element={<Pubg />} />
+          <Route path="/News" element={<News />} />
+          <Route path="/Valorant" element={<Valorant />} />
+          <Route path="/mlbb" element={<MLBBCommunity />} />
+          <Route path="/csgo" element={<CSGOCommunity />} />
         </Routes>
       </main>
 

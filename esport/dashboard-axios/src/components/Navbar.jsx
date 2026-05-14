@@ -36,7 +36,7 @@ function Navbar() {
       <div className="navi">
         <Link to="/">HOME</Link>
         <div className="dropdown">
-          <a className="droplist">DIVISIONS</a>
+          <Link className="droplist" to="/droplist">DIVISIONS</Link>
           <div className="dropdown-content">
             <Link className="pubg" to="/pubg">PUBG</Link>
             <Link className="ff" to="/freefire">FREE FIRE</Link>
@@ -53,6 +53,22 @@ function Navbar() {
         <Link to="/">MATCH</Link>
         <Link to="/">PARTNER</Link>
         <Link to="/creator">CREATOR</Link>
+            <a className="pubg" href="">PUBG</a>
+            <a className="ff" href="">FREE FIRE</a>
+            <Link className="ml" to="/mlbb">MOBILE LEGEND</Link>
+            <a className="hok" href="">HONOR OF KING</a>
+            <Link to="/Valorant" className="valo">VALORANT</Link>
+            <a className="dota2" href="">DOTA 2</a>
+            <Link className="csgo" to="/csgo">CSGO</Link>
+            <a className="point" href="">POINT BLANK</a>
+          </div>
+        </div>
+        
+        <a href="#">ABOUT</a>
+        <a href="#">MATCH</a>
+        <Link to="/partner">PARTNER</Link>
+        <a href="#">CREATOR</a>
+        <Link to="/News">NEWS</Link>
         <Link to="/Store">STORE</Link>
         <Link to="/">NEWS</Link>
       </div>
@@ -60,6 +76,8 @@ function Navbar() {
       <div className="nav-extra">
         <a href="#" id="user"><User size={20} /></a>
         <a href="#" id="menu"><Menu size={20} /></a>
+        <Link to="/User" id="user"><User size={20} /></Link>
+        <Link to="/Menu" id="menu"><Menu size={20} /></Link>
       </div>
     </nav>
   );
