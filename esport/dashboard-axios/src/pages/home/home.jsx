@@ -1,23 +1,24 @@
 import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
+import axios from "axios";
+
+// Import Assets (Pastikan path ini sesuai dengan struktur folder kamu)
 import aboutImg from '../../assets/logo_esport1.png';
+import sponsor1  from "../../assets/sponsor1.jpg";  
+import sponsor2  from "../../assets/sponsor2.png";  
+import sponsor3  from "../../assets/sponsor3.png";  
+import sponsor4  from "../../assets/sponsor4.avif"; 
+import sponsor5  from "../../assets/sponsor5.png";  
+import sponsor6  from "../../assets/sponsor6.png";  
+import sponsor7  from "../../assets/sponsor7.png";  
+import sponsor8  from "../../assets/sponsor8.png";  
+import sponsor9  from "../../assets/sponsor9.png";  
+import sponsor10 from "../../assets/sponsor10.png"; 
 
 // ============ HERO SECTION ============
 function Hero() {
   return (
     <section className="hero-section text-white">
-      <div className="container text-center">
-        <h1 className="display-2 fw-bold">WELCOME TO NOVA ESPORT</h1>
-        <p>Become Legend In Gaming World</p>
-
-        <button className="btn btn-purple me-3">
-          Join Team
-        </button>
-
-        <button className="btn btn-outline-light">
-          Watch Match
-        </button>
-      </div>
+      {/* Konten Hero kamu */}
     </section>
   );
 }
@@ -64,30 +65,25 @@ function About() {
   return (
     <section className="about-section" ref={sectionRef}>
       <div className="about-inner">
-
-        {/* Outline bergerak mengelilingi 2 kolom */}
         <span className="outline-top"></span>
         <span className="outline-right"></span>
         <span className="outline-bottom"></span>
         <span className="outline-left"></span>
 
-        {/* KIRI - Foto */}
         <div className="about-left">
           <img src={aboutImg} alt="Tim Esport" className="about-img" />
         </div>
 
-        {/* KANAN - Teks */}
         <div className={`about-right ${visible ? 'about-right--visible' : ''}`}>
           <div className="about-tag">WHO WE ARE</div>
           <h2 className="about-title">ABOUT US</h2>
           <div className="about-divider"></div>
           <p className="about-desc">
-            <strong>NAMA ESPORT</strong> adalah organisasi Esport profesional yang berdiri
+            <strong>HILING STRIKE</strong> adalah organisasi Esport profesional yang berdiri
             sejak tahun 2020. Kami memiliki visi untuk menjadi tim Esport
             terbaik di Asia dan melahirkan atlet-atlet berbakat yang mampu
             berkompetisi di level dunia.
           </p>
-
           <div className="about-stats">
             <div className="stat-item">
               <span className="stat-number">{counts.tahun}+</span>
@@ -110,7 +106,6 @@ function About() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
@@ -118,77 +113,14 @@ function About() {
 
 // ============ DIVISION SECTION ============
 const games = [
-  {
-    id: "pubg",
-    name: "PUBG MOBILE",
-    type: "mobile",
-    accent: "#c8a000",
-    bg: "linear-gradient(160deg, #1c2d4a, #0d1a30)",
-    charImg: "/src/assets/images/pubg-char.jpg",
-  },
-  {
-    id: "freefire",
-    name: "FREE FIRE",
-    type: "mobile",
-    accent: "#00bfff",
-    bg: "linear-gradient(160deg, #0d2240, #050f20)",
-    charImg: "",
-    logoImg: "",
-  },
-  {
-    id: "mlbb",
-    name: "MOBILE LEGENDS",
-    type: "mobile",
-    accent: "#d4a800",
-    bg: "linear-gradient(160deg, #1a0a30, #0a0518)",
-    charImg: "",
-    logoImg: "",
-  },
-  {
-    id: "hok",
-    name: "HONOR OF KINGS",
-    type: "mobile",
-    accent: "#ffd700",
-    bg: "linear-gradient(160deg, #0d0d25, #050510)",
-    charImg: "",
-    logoImg: "",
-  },
-  {
-    id: "valorant",
-    name: "VALORANT",
-    type: "pc",
-    accent: "#ff4655",
-    bg: "linear-gradient(160deg, #1a0a10, #0d0508)",
-    charImg: "",
-    logoImg: "",
-  },
-  {
-    id: "dota2",
-    name: "DOTA 2",
-    type: "pc",
-    accent: "#c23c2a",
-    bg: "linear-gradient(160deg, #0a1a10, #050d08)",
-    charImg: "",
-    logoImg: "",
-  },
-  {
-    id: "cs2",
-    name: "COUNTER-STRIKE 2",
-    type: "pc",
-    accent: "#e8b04a",
-    bg: "linear-gradient(160deg, #111108, #080804)",
-    charImg: "",
-    logoImg: "",
-  },
-  {
-    id: "pb",
-    name: "POINT BLANK",
-    type: "pc",
-    accent: "#00c853",
-    bg: "linear-gradient(160deg, #0a1520, #050a10)",
-    charImg: "",
-    logoImg: "",
-  },
+  { id: "pubg",      name: "PUBG MOBILE",      type: "mobile", accent: "#c8a000", bg: "linear-gradient(160deg, #1c2d4a, #0d1a30)", charImg: "https://cdn1.epicgames.com/spt-assets/53ec4985296b4facbe3a8d8d019afba9/pubg-battlegrounds-16v1j.jpg" },
+  { id: "freefire",  name: "FREE FIRE",         type: "mobile", accent: "#00bfff", bg: "linear-gradient(160deg, #0d2240, #050f20)", charImg: "https://asset.kompas.com/crops/-qfYPDY9h2x2QmPZjNuUu2T8qpE=/151x0:1231x720/1200x800/data/photo/2020/06/25/5ef405986c087.jpg" },
+  { id: "mlbb",      name: "MOBILE LEGENDS",    type: "mobile", accent: "#d4a800", bg: "linear-gradient(160deg, #1a0a30, #0a0518)", charImg: "https://images.tokopedia.net/img/KRMmCm/2023/6/15/65e7e1d3-65f8-4f8b-b0a3-ac5c76acb2a2.jpg" },
+  { id: "hok",       name: "HONOR OF KINGS",    type: "mobile", accent: "#ffd700", bg: "linear-gradient(160deg, #0d0d25, #050510)", charImg: "https://dt-webcons-web-xlrvm-prod-1394847165.cos.ap-jakarta.myqcloud.com/images/post/545aa85e-8522-400e-8195-73511129f424.jpg" },
+  { id: "valorant",  name: "VALORANT",          type: "pc",     accent: "#ff4655", bg: "linear-gradient(160deg, #1a0a10, #0d0508)", charImg: "https://www.riotgames.com/darkroom/1200/1dbd7211e78ce5faa7a8af9d10afad47:2b5979e3922758399ba389561e797919/ps-f2p-val-console-launch-16x9.jpg" },
+  { id: "dota2",     name: "DOTA 2",            type: "pc",     accent: "#c23c2a", bg: "linear-gradient(160deg, #0a1a10, #050d08)", charImg: "https://i.pcmag.com/imagery/reviews/00xeme7ybg1aolezzfqxhjv-4-hero-image-gallery.fit_scale.size_1050x594.v1569475078.jpg" },
+  { id: "cs2",       name: "COUNTER-STRIKE 2",  type: "pc",     accent: "#e8b04a", bg: "linear-gradient(160deg, #111108, #080804)", charImg: "https://i0.wp.com/internet.medialities.org/wp-content/uploads/2024/02/7a767-csgo-operation-10-details.jpg?fit=1200%2C675&ssl=1&w=640" },
+  { id: "pb",        name: "POINT BLANK",       type: "pc",     accent: "#00c853", bg: "linear-gradient(160deg, #0a1520, #050a10)", charImg: "https://hybrid.co.id/wp-content/uploads/2020/04/6aacf36edd9714e283ce5b32fd719461_point-blank-2020.jpg" },
 ];
 
 const MobileIcon = () => (
@@ -229,7 +161,6 @@ function Devision() {
       <div className="dv-header">
         <p className="dv-header-label">DIVISION</p>
       </div>
-
       <div className="dv-scroll">
         {games.map((game) => (
           <div
@@ -239,27 +170,15 @@ function Devision() {
             onMouseEnter={(e) => handleMouseEnter(e, game)}
             onMouseLeave={(e) => handleMouseLeave(e, game)}
           >
-            <div
-              className="dv-accent-bar"
-              style={{ background: game.accent }}
-            />
-
+            <div className="dv-accent-bar" style={{ background: game.accent, transform: "scaleX(0)" }} />
             <div className="dv-card-top">
-              <div className="dv-icon-box">
-                {game.type === "mobile" ? <MobileIcon /> : <PCIcon />}
-              </div>
-              <div className="dv-icon-box">
-                {game.type === "mobile" ? <MobileIcon /> : <PCIcon />}
-              </div>
+              <div className="dv-icon-box">{game.type === "mobile" ? <MobileIcon /> : <PCIcon />}</div>
+              <div className="dv-icon-box">{game.type === "mobile" ? <MobileIcon /> : <PCIcon />}</div>
             </div>
-
             <img className="dv-char" src={game.charImg} alt={game.name} />
-
             <div className="dv-bottom">
-              <button
-                className="dv-btn"
-                style={{ color: game.accent, borderColor: game.accent }}
-              >
+              <div className="dv-game-name" style={{ color: game.accent }}>{game.name}</div>
+              <button className="dv-btn" style={{ color: game.accent, borderColor: game.accent }}>
                 View Players
               </button>
             </div>
@@ -272,70 +191,111 @@ function Devision() {
 
 // ============ MATCH SECTION ============
 function Match() {
-  const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [matches, setMatches] = useState([]);
+
+  // Daftar nama tim musuh agar tidak muncul "Romaguera-Crona"
+  const enemyTeams = ["RRQ", "EVOS", "ONIC", "ALTER EGO", "BTR", "GEEK FAM", "AURA", "DEWA UNITED", "BOOM", "TALON"];
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/photos?_limit=10")
+      .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => {
-        setMatches(res.data);
+        const data = res.data.slice(0, 10).map((item, index) => ({
+          id: item.id,
+          team1: "HS",
+          // MENGUBAH DISINI: Mengambil dari array enemyTeams, bukan item.company.name
+          team2: enemyTeams[index % enemyTeams.length], 
+          stage: [
+            "Grand Final",
+            "Playoff",
+            "Upper Bracket",
+            "Knockout",
+            "Swiss Stage",
+          ][index % 5],
+          game: [
+            "VALORANT",
+            "PUBG MOBILE",
+            "MLBB",
+            "FREE FIRE",
+            "CS2",
+          ][index % 5],
+          result: Math.random() > 0.5 ? "WIN" : "LOSE",
+          time: `${10 + index}:00 PM`,
+        }));
+
+        setMatches(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
         setLoading(false);
       });
   }, []);
 
   if (loading) {
-    return <h1 className="text-center text-white">Loading...</h1>
+    return (
+      <section className="match-section">
+        <div className="loading-box">
+          <div className="loading-spinner"></div>
+          <h2>Loading Matches...</h2>
+        </div>
+      </section>
+    );
   }
 
-  return (
-    <section className="container my-5 text-white">
-      <h2>Upcoming Match</h2>
+  const leftMatches = matches.slice(0, 5);
+  const rightMatches = matches.slice(5);
 
-      <div className="row">
-        {matches.map((match) => (
-          <div className="col-md-4 mb-4" key={match.id}>
-            <div className="card">
-              <img src={match.url} className="card-img-top" />
-              <div className="card-body">
-                <h5>{match.title}</h5>
+  return (
+    <section className="match-section">
+      <div className="match-section-header">
+        <div className="match-col-header">RECENT MATCHES</div>
+      </div>
+      <div className="match-container">
+        <div className="match-col">
+          {leftMatches.map((match) => (
+            <div className="match-item" key={match.id}>
+              <div className="match-left">
+                <div className="match-game">{match.game}</div>
+                <div className="match-stage">{match.stage}</div>
+              </div>
+              <div className="match-center">
+                <h3>{match.team1}</h3>
+                <span className="vs-text">VS</span>
+                <h3>{match.team2}</h3>
+              </div>
+              <div className="match-right">
+                <div className={match.result === "WIN" ? "match-result-win" : "match-result-lose"}>
+                  {match.result}
+                </div>
+                <span className="match-time">{match.time}</span>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  )
-}
+          ))}
+        </div>
 
-// ============ NEWS SECTION ============
-function News() {
-  return (
-    <section className="container my-5 text-white">
-      <h2>Latest News</h2>
-      <div className="card p-3">
-        Tournament Nova Menang Regional
-      </div>
-    </section>
-  );
-}
-
-// ============ CREATOR SECTION ============
-function Creator() {
-  const creators = ["Raply", "Cindy", "Aldo"];
-
-  return (
-    <section className="container my-5 text-white">
-      <h2>Our Creators</h2>
-
-      <div className="row">
-        {creators.map((creator, index) => (
-          <div className="col-md-4" key={index}>
-            <div className="card p-3 text-center">
-              {creator}
+        <div className="match-col">
+          {rightMatches.map((match) => (
+            <div className="match-item" key={match.id}>
+              <div className="match-left">
+                <div className="match-game">{match.game}</div>
+                <div className="match-stage">{match.stage}</div>
+              </div>
+              <div className="match-center">
+                <h3>{match.team1}</h3>
+                <span className="vs-text">VS</span>
+                <h3>{match.team2}</h3>
+              </div>
+              <div className="match-right">
+                <div className={match.result === "WIN" ? "match-result-win" : "match-result-lose"}>
+                  {match.result}
+                </div>
+                <span className="match-time">{match.time}</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -343,18 +303,29 @@ function Creator() {
 
 // ============ PARTNER SECTION ============
 function Partner() {
-  const partners = ["INDIHOME", "ROG", "Logitech", "Redbull"];
+  const partners = [
+    { name: "DIOR", img: sponsor1 },
+    { name: "Napster", img: sponsor2 },
+    { name: "Backforce", img: sponsor3 },
+    { name: "Causony", img: sponsor4 },
+    { name: "GGBT", img: sponsor5 },
+    { name: "ROG", img: sponsor6 },
+    { name: "Indihome", img: sponsor7 },
+    { name: "Logitec", img: sponsor8 },
+    { name: "Tomorow", img: sponsor9 },
+    { name: "Tokopedia", img: sponsor10 },
+  ];
 
   return (
-    <section className="container my-5 text-white">
-      <h2>Our Partners</h2>
-
-      <div className="row">
+    <section className="partner-section">
+      <h2 className="partner-title">Partners</h2>
+      <div className="partner-grid">
         {partners.map((item, index) => (
-          <div className="col-md-3" key={index}>
-            <div className="card p-4 text-center">
-              {item}
-            </div>
+          <div className="partner-card" key={index}>
+            {item.img
+              ? <img src={item.img} alt={item.name} className="partner-img" />
+              : <span className="partner-name">{item.name}</span>
+            }
           </div>
         ))}
       </div>
@@ -362,32 +333,64 @@ function Partner() {
   );
 }
 
-// ============ CONTACT SECTION ============
+// ============ CONTACT SECTION (WITH AXIOS) ============
 function Contact() {
+  const [formData, setFormData] = useState({ nama: '', email: '', pesan: '' });
+  const [isSending, setIsSending] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    try {
+      // Mengirim data ke JSONPlaceholder (Simulasi API)
+      const res = await axios.post('https://jsonplaceholder.typicode.com/posts', formData);
+      console.log("Respon API:", res.data);
+      alert("Pesan berhasil dikirim!");
+      setFormData({ nama: '', email: '', pesan: '' });
+    } catch (err) {
+      console.error(err);
+      alert("Gagal mengirim pesan.");
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <section className="container my-5 text-white">
       <h2>Contact Us</h2>
-
-      <form>
-        <input
-          type="text"
-          className="form-control mb-3"
-          placeholder="Nama"
+      <form onSubmit={handleSubmit}>
+        <input 
+          name="nama"
+          type="text" 
+          className="form-control mb-3" 
+          placeholder="Nama" 
+          value={formData.nama}
+          onChange={handleChange}
+          required 
         />
-
-        <input
-          type="email"
-          className="form-control mb-3"
-          placeholder="Email"
+        <input 
+          name="email"
+          type="email" 
+          className="form-control mb-3" 
+          placeholder="Email" 
+          value={formData.email}
+          onChange={handleChange}
+          required 
         />
-
-        <textarea
-          className="form-control mb-3"
+        <textarea 
+          name="pesan"
+          className="form-control mb-3" 
           placeholder="Pesan"
+          value={formData.pesan}
+          onChange={handleChange}
+          required
         ></textarea>
-
-        <button className="btn btn-purple">
-          Kirim Pesan
+        <button type="submit" className="btn btn-purple" disabled={isSending}>
+          {isSending ? 'Mengirim...' : 'Kirim Pesan'}
         </button>
       </form>
     </section>
@@ -402,8 +405,6 @@ export default function Home() {
       <About />
       <Devision />
       <Match />
-      <News />
-      <Creator />
       <Partner />
       <Contact />
     </>

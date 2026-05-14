@@ -36,31 +36,30 @@ function Navbar() {
       <div className="navi">
         <Link to="/">HOME</Link>
         <div className="dropdown">
-          <a className="droplist">DIVISIONS</a>
+          <Link className="droplist" to="/droplist">DIVISIONS</Link>
           <div className="dropdown-content">
             <a className="pubg" href="">PUBG</a>
             <a className="ff" href="">FREE FIRE</a>
-            <a className="ml" href="">MOBILE LEGEND</a>
+            <Link className="ml" to="/mlbb">MOBILE LEGEND</Link>
             <a className="hok" href="">HONOR OF KING</a>
             <Link to="/Valorant" className="valo">VALORANT</Link>
             <a className="dota2" href="">DOTA 2</a>
-            <a className="csgo" href="">CSGO</a>
+            <Link className="csgo" to="/csgo">CSGO</Link>
             <a className="point" href="">POINT BLANK</a>
           </div>
         </div>
         
         <a href="#">ABOUT</a>
         <a href="#">MATCH</a>
-        <a href="#">PARTNER</a>
+        <Link to="/partner">PARTNER</Link>
         <a href="#">CREATOR</a>
         <Link to="/News">NEWS</Link>
         <Link to="/Store">STORE</Link>
       </div>
 
       <div className="nav-extra">
-        <a href="#" id="user"><User size={20} /></a>
-        <a href="#" id="menu"><Menu size={20} /></a>
-        
+        <Link to="/User" id="user"><User size={20} /></Link>
+        <Link to="/Menu" id="menu"><Menu size={20} /></Link>
       </div>
       
     </nav>
