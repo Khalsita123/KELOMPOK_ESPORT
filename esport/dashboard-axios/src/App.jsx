@@ -3,7 +3,9 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Home from "./pages/home/home";
 import Footer from "./components/Footer";
-import Store from "./pages/Store/Store"; 
+import Store from "./pages/Store/Store";
+import Ff from "./pages/ff/ff";
+import Hok from "./pages/hok/hok";
 
 function App() {
   return (
@@ -15,10 +17,12 @@ function App() {
         <Navbar />
       </nav>
 
-      <main>      
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Store" element={<Store />} />
+          <Route path="/ff" element={<Ff />} />
+          <Route path="/hok" element={<Hok />} />
         </Routes>
       </main>
 
@@ -28,5 +32,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;

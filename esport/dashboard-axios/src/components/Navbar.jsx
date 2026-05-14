@@ -39,9 +39,9 @@ function Navbar() {
           <a className="droplist">DIVISIONS</a>
           <div className="dropdown-content">
             <a className="pubg" href="">PUBG</a>
-            <a className="ff" href="">FREE FIRE</a>
+            <Link className="ff" to="/ff">FREE FIRE</Link>
             <a className="ml" href="">MOBILE LEGEND</a>
-            <a className="hok" href="">HONOR OF KING</a>
+            <Link className="hok" to="/hok">HONOR OF KING</Link>
             <a className="valo" href="">VALORANT</a>
             <a className="dota2" href="">DOTA 2</a>
             <a className="csgo" href="">CSGO</a>
