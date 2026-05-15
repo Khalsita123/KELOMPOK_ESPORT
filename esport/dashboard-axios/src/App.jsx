@@ -9,7 +9,6 @@ import Creator from "./pages/creator/creator";
 import Dit from "./pages/creator/dit";
 import Bri from "./pages/creator/bri";
 import Tzy from "./pages/creator/tzy";
-import Store from "./pages/Store/Store"; 
 import News from "./pages/News/News";
 import Valorant from "./pages/Valorant/Valorant";
 import Match from "./pages/home/Match";
