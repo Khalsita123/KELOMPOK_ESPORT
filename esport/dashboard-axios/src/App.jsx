@@ -43,6 +43,8 @@ function App() {
           <Route path="/mlbb" element={<MLBBCommunity />} />
           <Route path="/csgo" element={<CSGOCommunity />} />
           <Route path="/partner" element={<PartnerCommunity />} />
+          <Route path="/match" element={<Match />} />
+          <Route path="/point" element={<Point />} />
         </Routes>
       </main>
 

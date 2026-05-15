@@ -54,7 +54,7 @@ function Navbar() {
             <Link to="/valorant">VALORANT</Link>
             <Link to="/dota2">DOTA 2</Link>
             <Link to="/csgo">CSGO</Link>
-            <Link to="/point-blank">POINT BLANK</Link>
+            <Link to="/point">POINT BLANK</Link>
           </div>
         </div>
 
