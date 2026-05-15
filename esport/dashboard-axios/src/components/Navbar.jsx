@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import logoEsport from '../assets/logo_esport1.png';
-import { User, Menu,} from 'lucide-react';
+import { User, Menu } from 'lucide-react';
 
 function Navbar() {
   useEffect(() => {
@@ -9,20 +9,25 @@ function Navbar() {
     const menu = document.querySelector('#menu');
 
     const handleMenuClick = () => {
-      navbarNav.classList.toggle('active');
+      navbarNav?.classList.toggle('active');
     };
 
     const handleOutsideClick = (e) => {
-      if (!menu.contains(e.target) && !navbarNav.contains(e.target)) {
+      if (
+        navbarNav &&
+        menu &&
+        !menu.contains(e.target) &&
+        !navbarNav.contains(e.target)
+      ) {
         navbarNav.classList.remove('active');
       }
     };
 
-    menu.addEventListener('click', handleMenuClick);
+    menu?.addEventListener('click', handleMenuClick);
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
-      menu.removeEventListener('click', handleMenuClick);
+      menu?.removeEventListener('click', handleMenuClick);
       document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
@@ -35,33 +40,41 @@ function Navbar() {
 
       <div className="navi">
         <Link to="/">HOME</Link>
+
         <div className="dropdown">
-          <Link className="droplist" to="/droplist">DIVISIONS</Link>
+          <Link className="droplist" to="/droplist">
+            DIVISIONS
+          </Link>
+
           <div className="dropdown-content">
-            <a className="pubg" href="">PUBG</a>
-            <a className="ff" href="">FREE FIRE</a>
-            <Link className="ml" to="/mlbb">MOBILE LEGEND</Link>
-            <a className="hok" href="">HONOR OF KING</a>
-            <Link to="/Valorant" className="valo">VALORANT</Link>
-            <a className="dota2" href="">DOTA 2</a>
-            <Link className="csgo" to="/csgo">CSGO</Link>
-            <a className="point" href="">POINT BLANK</a>
+            <Link to="/pubg">PUBG</Link>
+            <Link to="/freefire">FREE FIRE</Link>
+            <Link to="/mlbb">MOBILE LEGEND</Link>
+            <Link to="/honor-of-king">HONOR OF KING</Link>
+            <Link to="/valorant">VALORANT</Link>
+            <Link to="/dota2">DOTA 2</Link>
+            <Link to="/csgo">CSGO</Link>
+            <Link to="/point">POINT BLANK</Link>
           </div>
         </div>
-        
-        <a href="#">ABOUT</a>
-        <a href="#">MATCH</a>
+
+        <Link to="/about">ABOUT</Link>
+        <Link to="/match">MATCH</Link>
         <Link to="/partner">PARTNER</Link>
-        <a href="#">CREATOR</a>
-        <Link to="/News">NEWS</Link>
-        <Link to="/Store">STORE</Link>
+        <Link to="/creator">CREATOR</Link>
+        <Link to="/news">NEWS</Link>
+        <Link to="/store">STORE</Link>
       </div>
 
       <div className="nav-extra">
-        <Link to="/User" id="user"><User size={20} /></Link>
-        <Link to="/Menu" id="menu"><Menu size={20} /></Link>
+        <Link to="/user" id="user-btn">
+          <User size={20} />
+        </Link>
+
+        <button id="menu" type="button">
+          <Menu size={20} />
+        </button>
       </div>
-      
     </nav>
   );
 }

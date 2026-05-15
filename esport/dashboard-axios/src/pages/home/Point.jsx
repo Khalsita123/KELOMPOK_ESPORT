@@ -99,8 +99,7 @@ const matches = [
     w: 0,
   },
 ];
-
-export default function FreeFire({ onBack }) {
+ function Point (){
   return (
     <section className="min-h-screen bg-black text-white">
 
@@ -300,3 +299,5 @@ function MatchRow({ match }) {
     </div>
   );
 }
+
+export default Point;

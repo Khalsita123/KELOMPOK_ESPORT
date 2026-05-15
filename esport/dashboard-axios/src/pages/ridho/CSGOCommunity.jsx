@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Trophy, Users, Swords, ChevronRight, Crosshair, Shield, Zap, Target, Eye, Award } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+
 
 const CSGOCommunity = () => {
   const [hoveredPlayer, setHoveredPlayer] = useState(null);
   const [activeTab, setActiveTab] = useState('all');
+
+useEffect(() => {
+  document.title = "CSGO Community";
+}, []);
 
   const players = [
     { id: 1, name: 'S1MPLE', role: 'AWPer', rating: '1.30', maps: '2840', kd: '1.28', hs: '42%', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600&h=800' },
@@ -121,7 +127,7 @@ const CSGOCommunity = () => {
           </h2>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 20 }}>
           {players.map((p, i) => (
             <motion.div key={p.id} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
               onMouseEnter={() => setHoveredPlayer(p.id)} onMouseLeave={() => setHoveredPlayer(null)}
