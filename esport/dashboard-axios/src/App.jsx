@@ -14,8 +14,9 @@ import Valorant from "./pages/Valorant/Valorant";
 import Match from "./pages/home/Match";
 import Point from "./pages/home/Point";
 
-import MLBBCommunity from "./components/MLBBCommunity";
-import CSGOCommunity from "./components/CSGOCommunity";
+import MLBBCommunity from "./pages/ridho/MLBBCommunity";
+import CSGOCommunity from "./pages/ridho/CSGOCommunity";
+import PartnerCommunity from "./pages/ridho/PartnerCommunity";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/Valorant" element={<Valorant />} />
           <Route path="/mlbb" element={<MLBBCommunity />} />
           <Route path="/csgo" element={<CSGOCommunity />} />
+          <Route path="/partner" element={<PartnerCommunity />} />
         </Routes>
       </main>
 
