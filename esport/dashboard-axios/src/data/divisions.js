@@ -4,9 +4,9 @@ export const divisions = {
     title: "FREE FIRE",
     subtitle: "Tim Mobile Champions Nova Esport",
     description: "Divisi Free Fire Nova Esport fokus pada kompetisi nasional dan regional. Tim kami mengandalkan strategi agresif dan rotasi cepat untuk mendominasi medan perang.",
-    banner: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
-    accent: "#ff4500",
-    accentLight: "#ff6b35",
+    banner: "https://images.hdqwalls.com/download/free-fire-2021-4k-71-1920x1080.jpg",
+    accent: "#FFB085",
+    accentLight: "#FFD1BA",
     stats: [
       { label: "Roster", value: "5 Atlet" },
       { label: "Turnamen", value: "8 Kompetisi" },

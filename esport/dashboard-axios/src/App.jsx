@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Store from "./pages/Store/Store";
 import Ff from "./pages/ff/ff";
 import Hok from "./pages/hok/hok";
+import About from "./pages/about/About";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/Store" element={<Store />} />
           <Route path="/ff" element={<Ff />} />
           <Route path="/hok" element={<Hok />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </main>
 

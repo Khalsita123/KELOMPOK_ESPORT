@@ -1,185 +1,226 @@
 import { Link } from "react-router-dom";
 import { divisions } from "../../data/divisions";
+import logoEsport from "../../assets/logo_esport1.png";
 
 export default function Ff() {
   const division = divisions.freefire;
   const accentColor = division.accent;
 
   return (
-    <section className="min-h-screen bg-black text-white">
-      {/* Hero Section dengan Back Button */}
-      <div className="relative" style={{ background: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${division.banner})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '60vh' }}>
-        <div className="absolute top-6 left-6">
-          <Link to="/" className="inline-block px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded transition text-sm font-bold">
+    <section className="min-h-screen bg-slate-900 text-white relative overflow-hidden">
+      {/* Background Art - Logo Esport */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none mix-blend-screen overflow-hidden">
+        <img src={logoEsport} alt="Art Background" className="w-[150vw] md:w-[80vw] max-h-screen object-contain rotate-12 blur-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pointer-events-none"></div>
+
+      {/* Hero Section */}
+      <div className="relative" style={{ background: `url(${division.banner})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '55vh' }}>
+        <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+        <div className="absolute top-6 left-6 z-10">
+          <Link to="/" className="inline-block px-5 py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 rounded-xl transition-all text-sm font-semibold shadow-lg">
             ← Kembali ke Home
           </Link>
         </div>
-        <div className="flex items-center justify-center h-full pt-20 pb-20 text-center">
-          <div>
-            <p className="text-gray-400 mb-2 text-sm font-bold">FREE FIRE</p>
-            <h1 className="text-7xl font-bold mb-4" style={{ color: accentColor, textTransform: 'uppercase', letterSpacing: '3px' }}>
-              FREE FIRE DIVISION
-            </h1>
-            <p className="text-xl text-gray-300">{division.subtitle}</p>
+        
+        <div className="relative z-10 flex flex-col items-center justify-center h-full pt-32 pb-16 px-4 text-center">
+          <div className="inline-block px-6 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md mb-6">
+            <p className="text-gray-300 text-xs md:text-sm font-bold tracking-[0.3em] uppercase">Nova Esport</p>
+          </div>
+          <h1 className="text-5xl md:text-8xl font-black mb-4 drop-shadow-[0_0_30px_rgba(255,176,133,0.3)]" style={{ color: accentColor, textTransform: 'uppercase', letterSpacing: '2px' }}>
+            FREE FIRE
+          </h1>
+          <p className="text-lg md:text-2xl text-gray-300 font-light tracking-wide max-w-3xl mx-auto mb-10">
+            {division.subtitle}
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-6 max-w-4xl w-full">
+            <div className="flex-1 min-w-[120px] p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-xl">
+              <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Win Rate</p>
+              <p className="text-2xl md:text-3xl font-bold" style={{ color: accentColor }}>{division.teams[0].winRate}</p>
+            </div>
+            <div className="flex-1 min-w-[120px] p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-xl">
+              <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Turnamen</p>
+              <p className="text-2xl md:text-3xl font-bold text-white">8<span className="text-sm font-normal text-gray-400 ml-1">Event</span></p>
+            </div>
+            <div className="flex-1 min-w-[120px] p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-xl">
+              <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Peringkat</p>
+              <p className="text-2xl md:text-3xl font-bold" style={{ color: accentColor }}>#1<span className="text-sm font-normal text-gray-400 ml-1">Nasional</span></p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16">
-        {/* Coach Section */}
-        <div className="mb-20">
-          <h2 className="text-5xl font-bold text-center mb-16 uppercase" style={{ color: accentColor, letterSpacing: '2px' }}>
-            COACH
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {division.coaches.map((coach) => (
-              <div key={coach.name} className="p-8 rounded-lg border-2" style={{ borderColor: accentColor, backgroundColor: '#1a0a0a' }}>
-                <div className="flex gap-6">
-                  <div className="w-24 h-24 rounded-full border-2 flex-shrink-0 overflow-hidden" style={{ borderColor: accentColor }}>
-                    <img src={coach.image} alt={coach.name} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-1" style={{ color: accentColor }}>{coach.name}</h3>
-                    <p style={{ color: accentColor }} className="font-bold text-sm mb-2">{coach.position}</p>
-                    <p className="text-gray-400 text-sm">Pengalaman: {coach.experience}</p>
-                    <p className="text-gray-400 text-sm">Spesialis: {coach.specialty}</p>
-                  </div>
+      {/* Main Content - Bento Grid Layout */}
+      <div className="container mx-auto px-4 py-12 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          {/* Left Column - Roster & Schedule (Span 8) */}
+          <div className="lg:col-span-8 space-y-8">
+            
+            {/* Roster Section */}
+            <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl">
+              <div className="flex justify-between items-end mb-8">
+                <div>
+                  <h2 className="text-3xl font-bold uppercase tracking-wider" style={{ color: accentColor }}>Main Roster</h2>
+                  <p className="text-gray-400 mt-2 text-sm">Pasukan elit pembawa kemenangan.</p>
+                </div>
+                <div className="h-10 w-10 rounded-full border border-white/20 flex items-center justify-center bg-white/5">
+                  <span className="text-xl">⚔️</span>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Team Section */}
-        <div className="mb-20">
-          <h2 className="text-5xl font-bold text-center mb-16 uppercase" style={{ color: accentColor, letterSpacing: '2px' }}>
-            TEAM - {division.teams[0].name.toUpperCase()}
-          </h2>
-          <div className="p-8 rounded-lg border-2 max-w-3xl mx-auto" style={{ borderColor: accentColor, backgroundColor: '#1a0a0a' }}>
-            <div className="flex justify-center mb-6">
-              <span className="bg-yellow-400 text-black font-bold px-4 py-2 rounded-full text-3xl">#1</span>
-            </div>
-            <h3 className="text-3xl font-bold text-center mb-3" style={{ color: accentColor }}>
-              {division.teams[0].name}
-            </h3>
-            <p className="text-center text-gray-400 mb-8">Tim juara nasional dengan performa impresif</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="p-4 rounded border text-center" style={{ borderColor: accentColor }}>
-                <p className="text-gray-400 text-xs">Didirikan</p>
-                <p className="text-2xl font-bold" style={{ color: accentColor }}>{division.teams[0].founded}</p>
-              </div>
-              <div className="p-4 rounded border text-center" style={{ borderColor: accentColor }}>
-                <p className="text-gray-400 text-xs">Menang</p>
-                <p className="text-2xl font-bold" style={{ color: accentColor }}>{division.teams[0].wins}</p>
-              </div>
-              <div className="p-4 rounded border text-center" style={{ borderColor: accentColor }}>
-                <p className="text-gray-400 text-xs">Kalah</p>
-                <p className="text-2xl font-bold" style={{ color: accentColor }}>{division.teams[0].losses}</p>
-              </div>
-              <div className="p-4 rounded border text-center" style={{ borderColor: accentColor }}>
-                <p className="text-gray-400 text-xs">Win Rate</p>
-                <p className="text-2xl font-bold" style={{ color: accentColor }}>{division.teams[0].winRate}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Roaster Main Section */}
-        <div className="mb-20">
-          <h3 className="text-4xl font-bold text-center mb-12 uppercase" style={{ color: accentColor, letterSpacing: '2px' }}>
-            Roaster
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {division.roasterMain.map((player) => (
-              <div key={player.name} className="p-6 rounded-lg border-2 text-center" style={{ borderColor: accentColor, backgroundColor: '#1a0a0a' }}>
-                <img src={player.image} alt={player.name} className="w-full aspect-square bg-gray-600 rounded-lg mb-3 object-cover" />
-                <h4 className="font-bold mb-1" style={{ color: accentColor }}>{player.name}</h4>
-                <p style={{ color: accentColor }} className="font-bold text-sm mb-2">{player.role}</p>
-                <p className="text-xs text-gray-400 mb-1">Kills: {player.kills}</p>
-                <p className="text-xs" style={{ color: accentColor }}>Rating: {player.rating}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Roaster Sub Section */}
-        <div className="mb-20">
-          <h3 className="text-4xl font-bold text-center mb-12 uppercase" style={{ color: accentColor, letterSpacing: '2px' }}>
-            Sub
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {division.roasterSub.map((player) => (
-              <div key={player.name} className="p-6 rounded-lg border-2 text-center" style={{ borderColor: accentColor, backgroundColor: '#1a0a0a' }}>
-                <img src={player.image} alt={player.name} className="w-full aspect-square bg-gray-600 rounded-lg mb-3 object-cover" />
-                <h4 className="font-bold mb-1" style={{ color: accentColor }}>{player.name}</h4>
-                <p style={{ color: accentColor }} className="font-bold text-sm">{player.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Schedule Section */}
-        <div className="mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 uppercase" style={{ color: accentColor, letterSpacing: '2px' }}>
-            JADWAL PERTANDINGAN
-          </h2>
-          <div className="space-y-4 max-w-2xl mx-auto">
-            {division.teams[0].stats.map((match, idx) => (
-              <div key={idx} className="p-6 rounded-lg border-l-4" style={{ borderLeftColor: accentColor, backgroundColor: '#1a0a0a' }}>
-                <p style={{ color: accentColor }} className="font-bold mb-3 text-sm">{match.date}</p>
-                <div className="flex items-center justify-between gap-3 mb-3">
-                  <div className="p-3 rounded border text-sm font-bold" style={{ borderColor: accentColor }}>
-                    {match.team1}
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {division.roasterMain.map((player) => (
+                  <div key={player.name} className="relative group rounded-2xl overflow-hidden border border-white/5 bg-slate-800/50 hover:border-white/20 transition-all duration-300">
+                    <img src={player.image} alt={player.name} className="w-full aspect-[3/4] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-[10px] font-bold tracking-widest uppercase mb-1" style={{ color: accentColor }}>{player.role}</p>
+                      <h4 className="font-bold text-lg leading-tight text-white">{player.name}</h4>
+                      <div className="flex justify-between mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div>
+                          <p className="text-[9px] text-gray-400 uppercase">Kills</p>
+                          <p className="text-xs font-bold">{player.kills}</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[9px] text-gray-400 uppercase">Rating</p>
+                          <p className="text-xs font-bold" style={{ color: accentColor }}>{player.rating}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <span className="text-gray-500 font-bold">VS</span>
-                  <div className="p-3 rounded border text-sm font-bold" style={{ borderColor: accentColor }}>
-                    {match.team2}
-                  </div>
-                </div>
-                <div className="text-xs text-gray-400 mb-1">{match.time}</div>
-                <p style={{ color: accentColor }} className="font-bold text-xs">{match.tournament}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Rankings Section */}
-        <div className="mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 uppercase" style={{ color: accentColor, letterSpacing: '2px' }}>
-            PAPAN PERINGKAT
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
-              <thead>
-                <tr style={{ backgroundColor: '#1a0a0a' }}>
-                  <th className="p-3 text-left border-2" style={{ borderColor: accentColor, color: accentColor }}>#</th>
-                  <th className="p-3 text-left border-2" style={{ borderColor: accentColor, color: accentColor }}>TIM</th>
-                  <th className="p-3 text-left border-2" style={{ borderColor: accentColor, color: accentColor }}>POIN</th>
-                  <th className="p-3 text-left border-2" style={{ borderColor: accentColor, color: accentColor }}>MENANG</th>
-                  <th className="p-3 text-left border-2" style={{ borderColor: accentColor, color: accentColor }}>KALAH</th>
-                </tr>
-              </thead>
-              <tbody>
-                {division.rankings.map((row, idx) => (
-                  <tr key={idx} style={{ backgroundColor: idx === 0 ? '#2a0a0a' : '#0a0a0a' }}>
-                    <td className="p-3 border-2" style={{ borderColor: accentColor, color: accentColor, fontWeight: 'bold' }}>{row.rank}</td>
-                    <td className="p-3 border-2" style={{ borderColor: accentColor }}>{row.team}</td>
-                    <td className="p-3 border-2" style={{ borderColor: accentColor, color: accentColor }}>{row.points}</td>
-                    <td className="p-3 border-2" style={{ borderColor: accentColor }}>{row.wins}</td>
-                    <td className="p-3 border-2" style={{ borderColor: accentColor }}>{row.losses}</td>
-                  </tr>
                 ))}
-              </tbody>
-            </table>
+              </div>
+            </div>
+
+            {/* Sub Roster */}
+            <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl">
+              <h3 className="text-xl font-bold uppercase tracking-wider mb-6 text-gray-300">Substitutes / Academy</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {division.roasterSub.map((player) => (
+                  <div key={player.name} className="relative group rounded-2xl overflow-hidden border border-white/5 bg-slate-800/50 hover:border-white/20 transition-all duration-300">
+                    <img src={player.image} alt={player.name} className="w-full aspect-[3/4] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-[10px] font-bold tracking-widest uppercase mb-1" style={{ color: accentColor }}>{player.role}</p>
+                      <h4 className="font-bold text-lg leading-tight text-white mb-1">{player.name}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Rankings */}
+            <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+              <h2 className="text-3xl font-bold uppercase tracking-wider mb-6 relative z-10" style={{ color: accentColor }}>
+                Papan Peringkat
+              </h2>
+              <div className="overflow-x-auto relative z-10">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr className="border-b border-white/10 text-xs uppercase tracking-wider text-gray-400">
+                      <th className="pb-4 font-medium pl-4">Posisi</th>
+                      <th className="pb-4 font-medium">Tim</th>
+                      <th className="pb-4 font-medium text-center">Poin</th>
+                      <th className="pb-4 font-medium text-center">W/L</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/5">
+                    {division.rankings.map((row, idx) => (
+                      <tr key={idx} className={`group transition-colors ${idx === 0 ? 'bg-white/5' : 'hover:bg-white/5'}`}>
+                        <td className="py-4 pl-4">
+                          <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold ${idx === 0 ? 'bg-white/20 text-white' : 'text-gray-500'}`}>
+                            {row.rank}
+                          </span>
+                        </td>
+                        <td className="py-4 font-bold text-sm md:text-base">
+                          {row.team} {idx === 0 && <span className="ml-2 text-sm">👑</span>}
+                        </td>
+                        <td className="py-4 text-center font-bold text-lg" style={{ color: accentColor }}>
+                          {row.points}
+                        </td>
+                        <td className="py-4 text-center text-sm text-gray-400">
+                          <span className="text-white">{row.wins}</span> - {row.losses}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
           </div>
+
+          {/* Right Column - Team Info, Coach, Schedule (Span 4) */}
+          <div className="lg:col-span-4 space-y-8">
+            
+            {/* Team Info Card */}
+            <div className="p-8 rounded-[2rem] bg-gradient-to-br from-white/10 to-white/5 border border-white/20 backdrop-blur-md shadow-2xl relative overflow-hidden group">
+              <div className="absolute -right-6 -top-6 text-8xl opacity-10 font-black italic transform group-hover:scale-110 transition-transform duration-500" style={{ color: accentColor }}>
+                #1
+              </div>
+              <p className="text-xs text-gray-300 uppercase tracking-widest mb-2">Team Profile</p>
+              <h2 className="text-4xl font-black uppercase mb-6" style={{ color: accentColor }}>{division.teams[0].name}</h2>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center pb-4 border-b border-white/10">
+                  <span className="text-gray-400 text-sm">Didirikan</span>
+                  <span className="font-bold">{division.teams[0].founded}</span>
+                </div>
+                <div className="flex justify-between items-center pb-4 border-b border-white/10">
+                  <span className="text-gray-400 text-sm">Total Menang</span>
+                  <span className="font-bold text-white">{division.teams[0].wins} Match</span>
+                </div>
+                <div className="flex justify-between items-center pb-2">
+                  <span className="text-gray-400 text-sm">Total Kalah</span>
+                  <span className="font-bold text-white">{division.teams[0].losses} Match</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Coach Section */}
+            <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl">
+              <h2 className="text-2xl font-bold uppercase tracking-wider mb-6" style={{ color: accentColor }}>Staff & Pelatih</h2>
+              <div className="space-y-6">
+                {division.coaches.map((coach) => (
+                  <div key={coach.name} className="flex flex-col sm:flex-row gap-5 items-center p-5 rounded-2xl bg-black/20 hover:bg-black/40 transition-colors border border-white/5 text-center sm:text-left">
+                    <img src={coach.image} alt={coach.name} className="w-28 h-28 rounded-full object-cover border-[3px] shadow-lg flex-shrink-0" style={{ borderColor: accentColor }} />
+                    <div>
+                      <p className="text-xs uppercase font-bold text-gray-400 mb-1">{coach.position}</p>
+                      <h4 className="font-bold text-white text-xl leading-tight mb-1">{coach.name}</h4>
+                      <p className="text-xs text-gray-500">{coach.specialty}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Schedule Section */}
+            <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl">
+              <h2 className="text-2xl font-bold uppercase tracking-wider mb-6" style={{ color: accentColor }}>Jadwal Match</h2>
+              <div className="space-y-4">
+                {division.teams[0].stats.map((match, idx) => (
+                  <div key={idx} className="relative p-5 rounded-xl bg-slate-800/50 border border-white/5 overflow-hidden group hover:border-white/20 transition-all">
+                    <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: accentColor }}></div>
+                    <p className="text-[10px] uppercase tracking-widest text-gray-400 mb-2">{match.date} • {match.time}</p>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="font-bold text-sm w-[40%] truncate">{match.team1}</span>
+                      <span className="text-[10px] font-black px-2 py-1 bg-white/10 rounded">VS</span>
+                      <span className="font-bold text-sm w-[40%] text-right text-gray-300 truncate">{match.team2}</span>
+                    </div>
+                    <p className="text-xs text-gray-500 truncate" style={{ color: accentColor }}>{match.tournament}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
-      <style>{`
-        .container {
-          max-width: 1200px;
-        }
-      `}</style>
     </section>
   );
 }

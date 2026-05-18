@@ -49,7 +49,7 @@ function Navbar() {
           </div>
         </div>
         
-        <a href="#">ABOUT</a>
+        <Link to="/about">ABOUT</Link>
         <a href="#">MATCH</a>
         <a href="#">PARTNER</a>
         <a href="#">CREATOR</a>
