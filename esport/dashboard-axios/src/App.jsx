@@ -9,10 +9,9 @@ import Creator from "./pages/creator/creator";
 import Dit from "./pages/creator/dit";
 import Bri from "./pages/creator/bri";
 import Tzy from "./pages/creator/tzy";
-import Store from "./pages/Store/Store"; 
 import News from "./pages/News/News";
 import Valorant from "./pages/Valorant/Valorant";
-import Store from "./pages/Store/Store";
+import Dota2 from "./pages/dota2/dota2";
 import Match from "./pages/home/Match";
 import Point from "./pages/home/Point";
 
@@ -41,6 +40,7 @@ function App() {
           <Route path="/pubg" element={<Pubg />} />
           <Route path="/News" element={<News />} />
           <Route path="/Valorant" element={<Valorant />} />
+          <Route path="/dota2" element={<Dota2 />} />
           <Route path="/mlbb" element={<MLBBCommunity />} />
           <Route path="/csgo" element={<CSGOCommunity />} />
         </Routes>
