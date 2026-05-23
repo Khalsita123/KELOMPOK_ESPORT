@@ -15,8 +15,9 @@ import Dota2 from "./pages/dota2/dota2";
 import Match from "./pages/home/Match";
 import Point from "./pages/home/Point";
 
-import MLBBCommunity from "./components/MLBBCommunity";
-import CSGOCommunity from "./components/CSGOCommunity";
+import MLBBCommunity from "./pages/ridho/MLBBCommunity";
+import CSGOCommunity from "./pages/ridho/CSGOCommunity";
+import PartnerCommunity from "./pages/ridho/PartnerCommunity";
 
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
           <Route path="/dota2" element={<Dota2 />} />
           <Route path="/mlbb" element={<MLBBCommunity />} />
           <Route path="/csgo" element={<CSGOCommunity />} />
+          <Route path="/partner" element={<PartnerCommunity />} />
+          <Route path="/match" element={<Match />} />
+          <Route path="/point" element={<Point />} />
         </Routes>
       </main>
 

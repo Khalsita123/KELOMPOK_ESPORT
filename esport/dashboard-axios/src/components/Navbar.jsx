@@ -11,20 +11,25 @@ function Navbar() {
     if (!navbarNav || !menu) return;
 
     const handleMenuClick = () => {
-      navbarNav.classList.toggle('active');
+      navbarNav?.classList.toggle('active');
     };
 
     const handleOutsideClick = (e) => {
-      if (!menu.contains(e.target) && !navbarNav.contains(e.target)) {
+      if (
+        navbarNav &&
+        menu &&
+        !menu.contains(e.target) &&
+        !navbarNav.contains(e.target)
+      ) {
         navbarNav.classList.remove('active');
       }
     };
 
-    menu.addEventListener('click', handleMenuClick);
+    menu?.addEventListener('click', handleMenuClick);
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
-      menu.removeEventListener('click', handleMenuClick);
+      menu?.removeEventListener('click', handleMenuClick);
       document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
@@ -69,6 +74,38 @@ function Navbar() {
         <a href="#" id="menu">
           <Menu size={20} />
         </a>
+          <Link className="droplist" to="/droplist">
+            DIVISIONS
+          </Link>
+
+          <div className="dropdown-content">
+            <Link to="/pubg">PUBG</Link>
+            <Link to="/freefire">FREE FIRE</Link>
+            <Link to="/mlbb">MOBILE LEGEND</Link>
+            <Link to="/honor-of-king">HONOR OF KING</Link>
+            <Link to="/valorant">VALORANT</Link>
+            <Link to="/dota2">DOTA 2</Link>
+            <Link to="/csgo">CSGO</Link>
+            <Link to="/point">POINT BLANK</Link>
+          </div>
+        </div>
+
+        <Link to="/about">ABOUT</Link>
+        <Link to="/match">MATCH</Link>
+        <Link to="/partner">PARTNER</Link>
+        <Link to="/creator">CREATOR</Link>
+        <Link to="/news">NEWS</Link>
+        <Link to="/store">STORE</Link>
+      </div>
+
+      <div className="nav-extra">
+        <Link to="/user" id="user-btn">
+          <User size={20} />
+        </Link>
+
+        <button id="menu" type="button">
+          <Menu size={20} />
+        </button>
       </div>
     </nav>
   );
