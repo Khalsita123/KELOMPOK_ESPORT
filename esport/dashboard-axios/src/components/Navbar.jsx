@@ -1,28 +1,35 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import logoEsport from '../assets/logo_esport1.png';
-import { User, Menu,} from 'lucide-react';
+import { User, Menu } from 'lucide-react';
 
 function Navbar() {
   useEffect(() => {
     const navbarNav = document.querySelector('.navi');
     const menu = document.querySelector('#menu');
 
+    if (!navbarNav || !menu) return;
+
     const handleMenuClick = () => {
-      navbarNav.classList.toggle('active');
+      navbarNav?.classList.toggle('active');
     };
 
     const handleOutsideClick = (e) => {
-      if (!menu.contains(e.target) && !navbarNav.contains(e.target)) {
+      if (
+        navbarNav &&
+        menu &&
+        !menu.contains(e.target) &&
+        !navbarNav.contains(e.target)
+      ) {
         navbarNav.classList.remove('active');
       }
     };
 
-    menu.addEventListener('click', handleMenuClick);
+    menu?.addEventListener('click', handleMenuClick);
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
-      menu.removeEventListener('click', handleMenuClick);
+      menu?.removeEventListener('click', handleMenuClick);
       document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
@@ -35,34 +42,71 @@ function Navbar() {
 
       <div className="navi">
         <Link to="/">HOME</Link>
+
         <div className="dropdown">
-          <a className="droplist">DIVISIONS</a>
+          <a className="droplist" href="#">
+            DIVISIONS
+          </a>
           <div className="dropdown-content">
-            <a className="pubg" href="">PUBG</a>
-            <Link className="ff" to="/ff">FREE FIRE</Link>
-            <a className="ml" href="">MOBILE LEGEND</a>
-            <Link className="hok" to="/hok">HONOR OF KING</Link>
-            <a className="valo" href="">VALORANT</a>
-            <a className="dota2" href="">DOTA 2</a>
-            <a className="csgo" href="">CSGO</a>
-            <a className="point" href="">POINT BLANK</a>
+            <Link className="pubg" to="/pubg">PUBG</Link>
+            <Link className="ff" to="/freefire">FREE FIRE</Link>
+            <Link className="ml" to="/mlbb">MOBILE LEGEND</Link>
+            <Link className="hok" to="/honor-of-king">HONOR OF KING</Link>
+            <Link className="valo" to="/Valorant">VALORANT</Link>
+            <Link className="dota2" to="/dota2">DOTA 2</Link>
+            <Link className="csgo" to="/csgo">CSGO</Link>
+            <Link className="point" to="/point-blank">POINT BLANK</Link>
           </div>
         </div>
-        
-        <Link to="/about">ABOUT</Link>
-        <a href="#">MATCH</a>
-        <a href="#">PARTNER</a>
-        <a href="#">CREATOR</a>
-        <a href="#">NEWS</a>
+
+        <Link to="/">ABOUT</Link>
+        <Link to="/">MATCH</Link>
+        <Link to="/">PARTNER</Link>
+        <Link to="/creator">CREATOR</Link>
+        <Link to="/News">NEWS</Link>
         <Link to="/Store">STORE</Link>
       </div>
 
       <div className="nav-extra">
-        <a href="#" id="user"><User size={20} /></a>
-        <a href="#" id="menu"><Menu size={20} /></a>
-        
+        <a href="#" id="user">
+          <User size={20} />
+        </a>
+        <a href="#" id="menu">
+          <Menu size={20} />
+        </a>
+          <Link className="droplist" to="/droplist">
+            DIVISIONS
+          </Link>
+
+          <div className="dropdown-content">
+            <Link to="/pubg">PUBG</Link>
+            <Link to="/freefire">FREE FIRE</Link>
+            <Link to="/mlbb">MOBILE LEGEND</Link>
+            <Link to="/honor-of-king">HONOR OF KING</Link>
+            <Link to="/valorant">VALORANT</Link>
+            <Link to="/dota2">DOTA 2</Link>
+            <Link to="/csgo">CSGO</Link>
+            <Link to="/point">POINT BLANK</Link>
+          </div>
+        </div>
+
+        <Link to="/about">ABOUT</Link>
+        <Link to="/match">MATCH</Link>
+        <Link to="/partner">PARTNER</Link>
+        <Link to="/creator">CREATOR</Link>
+        <Link to="/news">NEWS</Link>
+        <Link to="/store">STORE</Link>
       </div>
-      
+
+      <div className="nav-extra">
+        <Link to="/user" id="user-btn">
+          <User size={20} />
+        </Link>
+
+        <button id="menu" type="button">
+          <Menu size={20} />
+        </button>
+      </div>
     </nav>
   );
 }

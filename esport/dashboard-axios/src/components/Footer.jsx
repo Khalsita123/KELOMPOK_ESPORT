@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logoEsport from '../assets/logo_esport1.png';
 
 function Footer() {
@@ -11,33 +12,33 @@ function Footer() {
 
         <div className="footer-col">
           <h4>HILING STRIKE</h4>
-          <a href="#">About</a>
-          <a href="#">Match</a>
-          <a href="#">News</a>
-          <a href="#">Shop</a>
-          <a href="#">Partners</a>
-          <a href="#">Contact</a>
+        <Link to="/About">ABOUT</Link>
+        <Link to="/Match">MATCH</Link>
+        <Link to="/Partner">PARTNER</Link>
+        <Link to="/Creator">CREATOR</Link>
+        <Link to="/News">NEWS</Link>
+        <Link to="/Store">STORE</Link>
         </div>
 
         <div className="footer-col">
           <h4>DIVISIONS</h4>
-          <a href="#">Mobile Legends</a>
-          <a href="#">PUBG Mobile</a>
-          <a href="#">FREE FIRE</a>
-          <a href="#">VALORANT</a>
-          <a href="#">Honor of Kings</a>
-          <a href="#">Point Blank</a>
-          <a href="#">Counter Strike</a>
-          <a href="#">Dota2</a>
+          <Link to="/ml">Mobile Legends</Link>
+          <Link to="/pubg">PUBG Mobile</Link>
+          <Link to="/ff">FREE FIRE</Link>
+          <Link to="/valo">VALORANT</Link>
+          <Link to="/hok">Honor of Kings</Link>
+          <Link to="/point">Point Blank</Link>
+          <Link to="/csgo">Counter Strike</Link>
+          <Link to="/dota">Dota2</Link>
         </div>
 
         <div className="footer-col">
           <h4>FOLLOW US</h4>
           <div className="footer-socials">
-            <a href="#">IG</a>
-            <a href="#">YT</a>
-            <a href="#">FB</a>
-            <a href="#">X</a>
+            <Link to="/Ig">IG</Link>
+            <Link to="/Yt">YT</Link>
+            <Link to="/Fb">FB</Link>
+            <Link to="/X">X</Link>
           </div>
         </div>
 
