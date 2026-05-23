@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* ========================
-   NEWS PAGE - PPRX STYLE
-======================== */
-
 .news-page {
   width: 100%;
   min-height: 100vh;
@@ -13,7 +9,6 @@
   overflow-x: hidden;
 }
 
-/* ---- HERO HEADER ---- */
 .news-hero {
   position: relative;
   width: 100%;
@@ -46,7 +41,7 @@
 .news-hero-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(3.5rem, 4vw, 7rem);
-  font-weight: 700;
+  font-weight: 10;
   letter-spacing: -2px;
   line-height: 0.95;
   margin: 0 0 1.5rem;
@@ -61,7 +56,6 @@
   margin: 0;
 }
 
-/* ---- CATEGORY FILTER ---- */
 .news-filter {
   max-width: 1400px;
   margin: 0 auto;
@@ -111,7 +105,6 @@
   transform: scaleX(1);
 }
 
-/* ---- FEATURED CARD ---- */
 .news-featured {
   max-width: 1400px;
   margin: 0 auto;
@@ -292,7 +285,6 @@
   transform: translateX(4px);
 }
 
-/* ---- NEWS GRID ---- */
 .news-grid-section {
   max-width: 1400px;
   margin: 0 auto;
@@ -331,7 +323,6 @@
   gap: 24px;
 }
 
-/* ---- NEWS CARD ---- */
 .news-card {
   background: #111;
   border: 1px solid rgba(255, 255, 255, 0.04);
@@ -486,7 +477,6 @@
   transform: translateX(4px);
 }
 
-/* ---- LOAD MORE ---- */
 .news-load-more {
   display: flex;
   justify-content: center;
@@ -532,7 +522,6 @@
   z-index: 1;
 }
 
-/* ---- EMPTY STATE ---- */
 .news-empty {
   text-align: center;
   padding: 6rem 2rem;
@@ -551,7 +540,6 @@
   letter-spacing: 2px;
 }
 
-/* ---- ANIMATIONS ---- */
 @keyframes news-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
@@ -572,7 +560,6 @@
   animation: news-fadeIn 0.5s ease both;
 }
 
-/* ---- RESPONSIVE ---- */
 @media (max-width: 1024px) {
   .news-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* ========================
-   VALORANT PAGE
-======================== */
 
 .font-bebas {
   font-family: 'Bebas Neue', sans-serif;
@@ -16,7 +13,6 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* Custom Scrollbar for Modal if needed */
 ::-webkit-scrollbar {
   width: 6px;
 }

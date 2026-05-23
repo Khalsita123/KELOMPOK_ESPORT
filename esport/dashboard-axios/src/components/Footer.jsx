@@ -22,10 +22,10 @@ function Footer() {
 
         <div className="footer-col">
           <h4>DIVISIONS</h4>
-          <Link to="/ml">Mobile Legends</Link>
+          <Link to="/ml" className='ml'>Mobile Legends</Link>
           <Link to="/pubg">PUBG Mobile</Link>
           <Link to="/ff">FREE FIRE</Link>
-          <Link to="/valo">VALORANT</Link>
+          <Link to="/valo" className="valo">VALORANT</Link>
           <Link to="/hok">Honor of Kings</Link>
           <Link to="/point">Point Blank</Link>
           <Link to="/csgo">Counter Strike</Link>
