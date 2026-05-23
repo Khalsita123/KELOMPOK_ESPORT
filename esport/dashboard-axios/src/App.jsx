@@ -4,6 +4,9 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/home/home";
 import Footer from "./components/Footer";
 import Store from "./pages/Store/Store";
+import Ff from "./pages/ff/ff";
+import Hok from "./pages/hok/hok";
+import About from "./pages/about/About";
 import Pubg from "./pages/pubg/pubg";
 import Creator from "./pages/creator/creator";
 import Dit from "./pages/creator/dit";
@@ -30,10 +33,13 @@ function App() {
         <Navbar />
       </nav>
 
-      <main>      
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Store" element={<Store />} />
+          <Route path="/ff" element={<Ff />} />
+          <Route path="/hok" element={<Hok />} />
+          <Route path="/about" element={<About />} />
           <Route path="/creator" element={<Creator />} />
           <Route path="/tzy" element={<Tzy />} />
           <Route path="/dit" element={<Dit />} />
@@ -56,5 +62,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
