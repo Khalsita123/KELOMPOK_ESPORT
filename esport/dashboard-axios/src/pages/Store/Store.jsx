@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import { ShoppingBag, Search, X, Plus, Minus, Trash2 } from 'lucide-react';
 import jerseyImg from "./Image/Jersey-2026.jpeg";
+import HoodieImg from "./Image/Hoodie.png";
+import TopiImg from "./Image/Topi.png";
+import MousepadImg from "./Image/Mousepad.png";
+import JerseyAwayImg from "./Image/JerseyAway.png";
+import PinsetImg from "./Image/Pinset.png";
+
 
 const products = [
   {
     id: 1,
-    name: "NOVA PRO JERSEY 2024 - HOME",
+    name: "HS PRO JERSEY 2024 - HOME",
     price: 450000,
     priceStr: "Rp 450.000",
     image: jerseyImg,
@@ -14,46 +20,46 @@ const products = [
   },
   {
     id: 2,
-    name: "NOVA 'VISION' HOODIE BLACK",
+    name: "HS 'VISION' HOODIE GREY",
     price: 650000,
     priceStr: "Rp 650.000",
-    image: "https://via.placeholder.com/600x800?text=Vision+Hoodie",
+    image: HoodieImg,
     category: "APPAREL",
     isNew: false
   },
   {
     id: 3,
-    name: "NOVA CLASSIC CAP - NOIR",
+    name: "HS CLASSIC CAP - NOIR",
     price: 249000,
     priceStr: "Rp 249.000",
-    image: "https://via.placeholder.com/600x800?text=Classic+Cap",
+    image: TopiImg,
     category: "ACCESSORIES",
     isNew: false
   },
   {
     id: 4,
-    name: "NOVA X SPEED MOUSEPAD XL",
+    name: "HS MOUSEPAD XL",
     price: 399000,
     priceStr: "Rp 399.000",
-    image: "https://via.placeholder.com/600x800?text=Pro+Mousepad",
+    image: MousepadImg,
     category: "EQUIPMENT",
     isNew: true
   },
   {
     id: 5,
-    name: "NOVA JERSEY 2024 - AWAY",
+    name: "HS JERSEY x High School",
     price: 450000,
     priceStr: "Rp 450.000",
-    image: "https://via.placeholder.com/600x800?text=Away+Jersey",
+    image: JerseyAwayImg,
     category: "APPAREL",
     isNew: false
   },
   {
     id: 6,
-    name: "TEAM NOVA PIN SET",
+    name: "HS PIN SET",
     price: 850000,
     priceStr: "Rp 85.000",
-    image: "https://via.placeholder.com/600x800?text=Pin+Set",
+    image: PinsetImg,
     category: "ACCESSORIES",
     isNew: false
   }
@@ -68,14 +74,12 @@ function Store() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // === FILTERING LOGIC ===
   const filteredProducts = products.filter(p => {
     const matchCategory = activeCategory === 'ALL PRODUCTS' || p.category === activeCategory;
     const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
     return matchCategory && matchSearch;
   });
 
-  // === CART LOGIC ===
   const addToCart = (product) => {
     setCart(prev => {
       const existing = prev.find(item => item.id === product.id);
@@ -108,17 +112,18 @@ function Store() {
 
   return (
     <section id="store" className="store-section pb-5 text-white position-relative" style={{ backgroundColor: '#050505', minHeight: '100vh', overflowX: 'hidden', paddingTop: '1rem' }}>
-      <div className="container">
+      <div className="store-container">
         
-        {/* Header Section */}
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 gap-4">
-          <div>
-            <h1 className="display-4 fw-bold m-0" style={{ letterSpacing: '-2px' }}>HS STORE</h1>
-            <p className="text-secondary fw-bold mb-1 tracking-widest" style={{ fontSize: '0.8rem' }}>OFFICIAL MERCHANDISE</p>
-          </div>
+  <div className="text-start"> 
+    <h1 className="display-4 fw-bold m-0" style={{ letterSpacing: '-2px', transform: 'translateX(-5px)' }}>
+      HS STORE
+    </h1>
+    <p className="text-secondary fw-bold mb-1 tracking-widest" 
+      style={{ fontSize: '0.8rem', transform: 'translateX(0px)' }}>OFFICIAL MERCHANDISE</p>
+  </div>
           <div className="d-flex gap-2 align-items-center">
             
-            {/* Search Input Field (expands when active) */}
             {isSearchActive && (
               <div className="search-input-container">
                 <input 
@@ -149,7 +154,6 @@ function Store() {
           </div>
         </div>
 
-        {/* Categories Bar */}
         <div className="categories-filter d-flex gap-4 mb-5 border-bottom border-secondary pb-3 overflow-auto no-scrollbar">
           {categories.map(category => (
             <button
@@ -166,7 +170,6 @@ function Store() {
           ))}
         </div>
 
-        {/* Product Grid */}
         {filteredProducts.length > 0 ? (
           <div className="row g-4">
             {filteredProducts.map((product) => (
@@ -184,7 +187,6 @@ function Store() {
                       className="w-100 h-100 object-fit-cover transition-all duration-500 hover-zoom"
                     />
                     
-                    {/* Add to cart overlay button on hover */}
                     <div className="position-absolute bottom-0 start-0 w-100 p-3 opacity-0 transition-all duration-300 add-to-cart-overlay">
                       <button 
                         className="btn btn-white w-100 rounded-0 fw-bold py-2 bg-white text-black hover-purple"
@@ -211,8 +213,6 @@ function Store() {
         )}
       </div>
 
-      {/* === SHOPPING CART SIDEBAR === */}
-      {/* Backdrop */}
       {isCartOpen && (
         <div 
           className="position-fixed top-0 start-0 w-100 h-100 bg-black opacity-50 z-40"
@@ -221,7 +221,6 @@ function Store() {
         />
       )}
       
-      {/* Sidebar Content */}
       <div 
         className={`position-fixed top-0 end-0 h-100 bg-dark z-50 text-white transition-transform duration-300 d-flex flex-column`}
         style={{ 
@@ -300,8 +299,19 @@ function Store() {
       </div>
 
       <style>{`
+        .store-container {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 2rem;
+          width: 100%;
+        }
+        @media (max-width: 768px) {
+          .store-container {
+            padding: 0 1.5rem;
+          }
+        }
         .btn-purple {
-          background-color: #e31837; /* Menggunakan merah Valorant/Team Secret */
+          background-color: #e31837;
           color: white;
           border: none;
           transition: all 0.3s ease;
@@ -322,7 +332,6 @@ function Store() {
           color: white !important;
         }
         
-        /* Product Card Hover Effects */
         .product-card:hover .hover-zoom {
           transform: scale(1.05);
         }
@@ -330,7 +339,6 @@ function Store() {
           opacity: 1 !important;
         }
         
-        /* Input Search animation */
         .search-input-container {
           animation: slideLeft 0.3s ease forwards;
         }
@@ -347,7 +355,6 @@ function Store() {
           scrollbar-width: none;
         }
         
-        /* Custom scrollbar for cart */
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
         }
