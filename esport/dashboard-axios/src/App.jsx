@@ -4,6 +4,9 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/home/home";
 import Footer from "./components/Footer";
 import Store from "./pages/Store/Store";
+import Ff from "./pages/ff/ff";
+import Hok from "./pages/hok/hok";
+import About from "./pages/about/About";
 import Pubg from "./pages/pubg/pubg";
 import Creator from "./pages/creator/creator";
 import Dit from "./pages/creator/dit";
@@ -11,6 +14,7 @@ import Bri from "./pages/creator/bri";
 import Tzy from "./pages/creator/tzy";
 import News from "./pages/News/News";
 import Valorant from "./pages/Valorant/Valorant";
+import Dota2 from "./pages/dota2/dota2";
 import Match from "./pages/home/Match";
 import Point from "./pages/home/Point";
 
@@ -29,10 +33,13 @@ function App() {
         <Navbar />
       </nav>
 
-      <main>      
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Store" element={<Store />} />
+          <Route path="/ff" element={<Ff />} />
+          <Route path="/hok" element={<Hok />} />
+          <Route path="/about" element={<About />} />
           <Route path="/creator" element={<Creator />} />
           <Route path="/tzy" element={<Tzy />} />
           <Route path="/dit" element={<Dit />} />
@@ -40,6 +47,7 @@ function App() {
           <Route path="/pubg" element={<Pubg />} />
           <Route path="/News" element={<News />} />
           <Route path="/Valorant" element={<Valorant />} />
+          <Route path="/dota2" element={<Dota2 />} />
           <Route path="/mlbb" element={<MLBBCommunity />} />
           <Route path="/csgo" element={<CSGOCommunity />} />
           <Route path="/partner" element={<PartnerCommunity />} />
@@ -54,5 +62,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
