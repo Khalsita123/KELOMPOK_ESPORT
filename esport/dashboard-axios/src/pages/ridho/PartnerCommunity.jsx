@@ -73,6 +73,7 @@ const PartnerCommunity = () => {
   const [apiPartners, setApiPartners] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     const fetchApiData = async () => {
       try {
