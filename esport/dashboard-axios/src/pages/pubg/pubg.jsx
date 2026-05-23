@@ -1,13 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "../style/pubg.css";
 import banner from "../../assets/pubgbanner.png";
 import uppi from "../../assets/Uppi.png";
 import brian from "../../assets/Brian.png";
 import dit from "../../assets/dit2.png";
 import tzy from "../../assets/tzy.png";
+import M416 from "../../assets/m14.png";
+import UMP45 from "../../assets/ump45.png";
+import Mini14 from "../../assets/mini14.png";
+import Kar98k from "../../assets/kar94.png";
 
-// --- 1. DATA DUMMY PEMAIN ---
+const formatPubgNewsItems = (sourceText) => {
+  const itemPattern = /\*\s+\[!\[Image\s+\d+:\s+[^\]]*?thumbnail\]\((https?:\/\/[^)]+)\)\s+(.+?)\s+(PATCH NOTES|ANNOUNCEMENT|ARCADE|DEV LETTER|UNIVERSE|EVENT|ESPORTS)\s+(\d{4}\.\d{2}\.\d{2})\]\((https?:\/\/www\.pubg\.com\/en\/news\/\d+)\)/gi;
+
+  return Array.from(sourceText.matchAll(itemPattern)).slice(0, 12).map((match, index) => {
+    const imageUrl = match[1];
+    const rawTitle = match[2].replace(/^\s*(PC CONSOLE|PC|CONSOLE|Esports|ALL)\s+/i, "").replace(/\s+/g, " ").trim();
+    const category = match[3].toUpperCase();
+    const dateValue = match[4];
+    const url = match[5];
+
+    const title = rawTitle.replace(/\s+(PATCH NOTES|ANNOUNCEMENT|ARCADE|DEV LETTER|UNIVERSE|EVENT|ESPORTS)\s*$/i, "").trim();
+    const description = rawTitle.length > title.length ? rawTitle.slice(title.length).trim() : `Official PUBG ${category.toLowerCase()} update.`;
+
+    return {
+      id: `${index}-${url.split("/").pop()}`,
+      title,
+      description,
+      category,
+      date: new Date(dateValue.replace(/\./g, "-")).toLocaleDateString("id-ID", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }),
+      source: "PUBG Official",
+      url,
+      imageUrl,
+    };
+  });
+};
+
+// --- 1. DATA PEMAIN ---
 const rosterData = [
   {
     id: 1,
@@ -21,6 +56,7 @@ const rosterData = [
     photo: uppi,
     weapon: {
       name: "M416",
+      weaponImage: M416,
       attachments: ["Compensator AR", "Half Grip", "Extended QD Mag", "Tactical Stock", "Red Dot Sight"],
       proTip: "Tahan recoil pakai kombinasi half grip dan compensator, trust the spray!"
     },
@@ -43,6 +79,7 @@ const rosterData = [
     photo: brian,
     weapon: {
       name: "UMP45",
+      weaponImage: UMP45,
       attachments: ["Suppressor SMG", "Laser Sight", "Extended QD Mag", "Red Dot Sight"],
       proTip: "Laser sight wajib buat close combat, aim auto nempel ke musuh."
     },
@@ -65,6 +102,7 @@ const rosterData = [
     photo: dit,
     weapon: {
       name: "Mini14",
+      weaponImage: Mini14,
       attachments: ["Compensator Sniper", "Extended QD Mag", "8x Scope"],
       proTip: "Spam tapping dari jauh buat cover rusher yang lagi open fire."
     },
@@ -87,6 +125,7 @@ const rosterData = [
     photo: tzy,
     weapon: {
       name: "Kar98k",
+      weaponImage: Kar98k,
       attachments: ["Suppressor Sniper", "Bullet Loops", "8x Scope"],
       proTip: "Satu peluru, satu nyawa. Selalu incar kepala saat musuh sedang diam looting."
     },
@@ -101,6 +140,43 @@ const rosterData = [
 
 export default function Pubg() {
   const [activePlayer, setActivePlayer] = useState(null);
+  const [newsItems, setNewsItems] = useState([]);
+  const [newsLoading, setNewsLoading] = useState(true);
+  const [newsError, setNewsError] = useState("");
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        setNewsLoading(true);
+        setNewsError("");
+
+        const newsPages = [1, 2, 3];
+        const responses = await Promise.all(
+          newsPages.map((page) =>
+            axios
+              .get(`https://r.jina.ai/http://www.pubg.com/en/news${page === 1 ? "" : `?page=${page}`}`)
+              .then((response) => String(response.data))
+              .catch(() => "")
+          )
+        );
+
+        const formattedItems = Array.from(
+          new Map(
+            formatPubgNewsItems(responses.join("\n")).map((item) => [item.url, item])
+          ).values()
+        ).slice(0, 12);
+
+        setNewsItems(formattedItems);
+      } catch (error) {
+        setNewsError("Gagal mengambil news PUBG official.");
+        console.error("PUBG news fetch error:", error);
+      } finally {
+        setNewsLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
 
   const togglePlayer = (id) => {
     setActivePlayer(activePlayer === id ? null : id);
@@ -111,7 +187,7 @@ export default function Pubg() {
       
       {/* --- HERO SECTION / BANNER BACKGROUND --- */}
       {/* Menggunakan absolute & z-0 agar teks dan konten bisa berada di atasnya */}
-      <section className="absolute top-10 left-0 w-full h-[550px] md:h-[700px] overflow-hidden z-0 flex items-center justify-center">
+      <section className="absolute -top-5 left-0 w-full h-[550px] md:h-[700px] overflow-hidden z-0 flex items-center justify-center">
         <img
           src={banner}
           alt="PUBG Banner"
@@ -128,7 +204,7 @@ export default function Pubg() {
 
       {/* --- KONTEN UTAMA --- */}
       {/* relative & z-10 memastikan konten ini berada di atas banner background */}
-      <div className="relative z-10 pt-[630px] md:pt-[780px] pb-20 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 pt-[600px] md:pt-[750px] pb-20 px-4 sm:px-6 lg:px-8">
         
 
         {/* Kontainer Daftar Pemain */}
@@ -203,6 +279,11 @@ export default function Pubg() {
                   {/* Visual Nama Senjata */}
                   <div className="w-full md:w-1/3 flex flex-col items-center justify-center bg-black/60 rounded-lg p-6 border border-gray-800">
                     <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-2">Favorite Weapon</p>
+                    <img 
+                      src={player.weapon.weaponImage} 
+                      alt={player.weapon.name} 
+                      className="w-40 h-40 object-contain mb-4 drop-shadow-lg"
+                    />
                     <h4 className="text-5xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-orange-400 to-orange-600">
                       {player.weapon.name}
                     </h4>
@@ -252,6 +333,83 @@ export default function Pubg() {
 
             </div>
           ))}
+        </div>
+
+        {/* --- NEWS SECTION --- */}
+        <div className="mt-20 pt-16 border-t border-gray-800">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-12 flex items-center gap-4">
+            <span className="bg-gradient-to-br from-orange-400 to-red-600 px-4 py-2 rounded shadow-lg shadow-orange-500/50">📰</span>
+            PUBG Latest News
+          </h2>
+
+          {newsLoading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="text-center">
+                <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500 mb-4"></div>
+                <p className="text-gray-400 text-lg">Loading official PUBG news...</p>
+              </div>
+            </div>
+          ) : newsError ? (
+            <div className="bg-red-900/30 border border-red-500/50 rounded-lg p-6 text-center">
+              <p className="text-red-400 font-semibold">{newsError}</p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto pb-4 snap-x snap-mandatory">
+              <div className="flex gap-6 w-max pr-4">
+              {newsItems.map((news) => (
+                <article
+                  key={news.id}
+                  className="group relative bg-gray-900/60 backdrop-blur-lg border border-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-300 hover:scale-[1.03] hover:border-orange-500/60 flex flex-col w-[320px] md:w-[360px] shrink-0 snap-start"
+                >
+                  <div className="relative h-48 bg-gradient-to-br from-gray-800 via-gray-900 to-black overflow-hidden">
+                    {news.imageUrl ? (
+                      <img
+                        src={news.imageUrl}
+                        alt={news.title}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    ) : null}
+                    <div className="absolute inset-0 bg-gradient-to-b from-orange-600/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  </div>
+
+                  <div className="relative p-5 bg-gray-900/95 flex-1 flex flex-col">
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <span className="text-xs font-bold text-orange-400 uppercase tracking-widest">
+                        {news.date}
+                      </span>
+                      <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded border border-orange-500/40">
+                        {news.category}
+                      </span>
+                    </div>
+
+                    <h3 className="text-base font-bold text-white mb-3 line-clamp-2 group-hover:text-orange-300 transition-colors">
+                      {news.title}
+                    </h3>
+
+                    <p className="text-gray-400 text-sm mb-4 line-clamp-3 flex-1">
+                      {news.description}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-700">
+                      <span className="text-xs text-gray-500">
+                        📌 {news.source}
+                      </span>
+                      <a
+                        href={news.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white px-3 py-1 rounded text-xs font-bold transition-all duration-300"
+                      >
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </main>
