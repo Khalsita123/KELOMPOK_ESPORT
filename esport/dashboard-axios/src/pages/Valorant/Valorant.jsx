@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import './Valorant.css';
 import backgroundBg from './background.jpg';
 import valorantLogo from './logo valorant.png';
 import xLogo from './X Logo.png';
@@ -307,6 +306,35 @@ export default function Valorant() {
       {selectedPlayer && (
         <PlayerModal player={selectedPlayer} onClose={handleCloseModal} />
       )}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        .font-bebas {
+          font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .font-rajdhani {
+          font-family: 'Rajdhani', sans-serif;
+        }
+
+        .font-inter {
+          font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+          width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #333;
+          border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+      `}</style>
     </div>
   );
 }
