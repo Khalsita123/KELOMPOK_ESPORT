@@ -108,7 +108,7 @@ const matches = [
       <div className="relative w-full h-65 md:h-85 overflow-hidden bg-gray-900">
         <img
           src="https://www.pointblank.id/images/common/og_image.jpg"
-          alt="Free Fire Banner"
+          alt="point blank banner"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         {/* bg-linear-to-b canonical (replaces bg-gradient-to-b) */}
@@ -124,17 +124,17 @@ const matches = [
         <div className="space-y-6 text-gray-300 text-base md:text-lg leading-relaxed text-center max-w-5xl mx-auto">
           <div className="space-y-4 text-white text-sm md:text-base leading-relaxed">
             <p>
-              Hilling Strike Free Fire Division terbentuk dengan ambisi menjadi tim terdepan di kancah
-              Mobile Gaming kompetitif Indonesia. Beranggotakan pemain-pemain terbaik yang telah teruji
+              Hilling Strike Point Blank Division terbentuk dengan ambisi menjadi tim terdepan di kancah
+              Point Blank kompetitif Indonesia. Beranggotakan pemain-pemain terbaik yang telah teruji
               di berbagai turnamen lokal maupun nasional.
             </p>
             <p>
-              Divisi Free Fire Hilling Strike terus berkembang dengan merekrut talenta muda berbakat
+              Divisi Point Blank Hilling Strike terus berkembang dengan merekrut talenta muda berbakat
               yang memiliki skill mumpuni dan semangat juang tinggi. Setiap pemain dipilih melalui
               seleksi ketat untuk memastikan kualitas terbaik.
             </p>
             <p>
-              Kini Hilling Strike Free Fire Division siap bersaing di level tertinggi dan mengharumkan
+              Kini Hilling Strike Point Blank Division siap bersaing di level tertinggi dan mengharumkan
               nama tim di berbagai kompetisi bergengsi, membawa pulang trophy demi trophy untuk
               para supporter setia kami.
             </p>

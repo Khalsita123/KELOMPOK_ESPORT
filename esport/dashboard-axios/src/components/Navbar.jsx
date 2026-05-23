@@ -49,19 +49,19 @@ function Navbar() {
           </a>
           <div className="dropdown-content">
             <Link className="pubg" to="/pubg">PUBG</Link>
-            <Link className="ff" to="/freefire">FREE FIRE</Link>
+            <Link className="ff" to="/ff">FREE FIRE</Link>
             <Link className="ml" to="/mlbb">MOBILE LEGEND</Link>
-            <Link className="hok" to="/honor-of-king">HONOR OF KING</Link>
+            <Link className="hok" to="/hok">HONOR OF KING</Link>
             <Link className="valo" to="/Valorant">VALORANT</Link>
             <Link className="dota2" to="/dota2">DOTA 2</Link>
             <Link className="csgo" to="/csgo">CSGO</Link>
-            <Link className="point" to="/point-blank">POINT BLANK</Link>
+            <Link className="point" to="/Point">POINT BLANK</Link>
           </div>
         </div>
 
-        <Link to="/">ABOUT</Link>
-        <Link to="/">MATCH</Link>
-        <Link to="/">PARTNER</Link>
+        <Link to="/about">ABOUT</Link>
+        <Link to="/match">MATCH</Link>
+        <Link to="/partner">PARTNER</Link>
         <Link to="/creator">CREATOR</Link>
         <Link to="/News">NEWS</Link>
         <Link to="/Store">STORE</Link>
@@ -74,38 +74,7 @@ function Navbar() {
         <a href="#" id="menu">
           <Menu size={20} />
         </a>
-          <Link className="droplist" to="/droplist">
-            DIVISIONS
-          </Link>
 
-          <div className="dropdown-content">
-            <Link to="/pubg">PUBG</Link>
-            <Link to="/freefire">FREE FIRE</Link>
-            <Link to="/mlbb">MOBILE LEGEND</Link>
-            <Link to="/honor-of-king">HONOR OF KING</Link>
-            <Link to="/valorant">VALORANT</Link>
-            <Link to="/dota2">DOTA 2</Link>
-            <Link to="/csgo">CSGO</Link>
-            <Link to="/point">POINT BLANK</Link>
-          </div>
-        </div>
-
-        <Link to="/about">ABOUT</Link>
-        <Link to="/match">MATCH</Link>
-        <Link to="/partner">PARTNER</Link>
-        <Link to="/creator">CREATOR</Link>
-        <Link to="/news">NEWS</Link>
-        <Link to="/store">STORE</Link>
-      </div>
-
-      <div className="nav-extra">
-        <Link to="/user" id="user-btn">
-          <User size={20} />
-        </Link>
-
-        <button id="menu" type="button">
-          <Menu size={20} />
-        </button>
       </div>
     </nav>
   );

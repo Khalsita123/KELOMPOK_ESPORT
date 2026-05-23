@@ -200,51 +200,61 @@ function Match() {
   useEffect(() => {
     let cancelled = false;
 
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => {
-        const data = res.data.slice(0, 10).map((item, index) => ({
-          id: item.id,
-          team1: "HS",
-          // MENGUBAH DISINI: Mengambil dari array enemyTeams, bukan item.company.name
-          team2: enemyTeams[index % enemyTeams.length], 
-          stage: [
-            "Grand Final",
-            "Playoff",
-            "Upper Bracket",
-            "Knockout",
-            "Swiss Stage",
-          ][index % 5],
-          game: [
-            "VALORANT",
-            "PUBG MOBILE",
-            "MLBB",
-            "FREE FIRE",
-            "CS2",
-          ][index % 5],
-          result: Math.random() > 0.5 ? "WIN" : "LOSE",
-          time: `${10 + index}:00 PM`,
-        }));
+    // Tambahkan simulated delay 1.2s agar loading spinner terlihat dramatis & premium
+    const timer = setTimeout(() => {
+      axios
+        .get("https://jsonplaceholder.typicode.com/users")
+        .then((res) => {
+          if (cancelled) return;
+          const data = res.data.slice(0, 10).map((item, index) => ({
+            id: item.id,
+            team1: "HS",
+            // MENGUBAH DISINI: Mengambil dari array enemyTeams, bukan item.company.name
+            team2: enemyTeams[index % enemyTeams.length], 
+            stage: [
+              "Grand Final",
+              "Playoff",
+              "Upper Bracket",
+              "Knockout",
+              "Swiss Stage",
+            ][index % 5],
+            game: [
+              "VALORANT",
+              "PUBG MOBILE",
+              "MLBB",
+              "FREE FIRE",
+              "CS2",
+            ][index % 5],
+            result: Math.random() > 0.5 ? "WIN" : "LOSE",
+            time: `${10 + index}:00 PM`,
+          }));
 
-        setMatches(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+          setMatches(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error(err);
+          if (!cancelled) setLoading(false);
+        });
+    }, 1200);
 
     return () => {
       cancelled = true;
+      clearTimeout(timer);
     };
   }, []);
 
   if (loading) {
     return (
       <section className="match-section">
-        <div className="loading-box">
+        <div className="match-section-header">
+          <div className="match-col-header">RECENT MATCHES</div>
+        </div>
+        <div className="loading-box" style={{ minHeight: '350px' }}>
           <div className="loading-spinner"></div>
-          <h2>Loading Matches...</h2>
+          <h2 style={{ color: '#a855f7', fontWeight: '800', letterSpacing: '2px', textTransform: 'uppercase', marginTop: '15px', fontSize: '1.2rem' }}>
+            Fetching Arena Matches...
+          </h2>
         </div>
       </section>
     );
@@ -258,7 +268,7 @@ function Match() {
       <div className="match-section-header">
         <div className="match-col-header">RECENT MATCHES</div>
       </div>
-      <div className="match-container">
+      <div className="match-container match-fade-in">
         <div className="match-col">
           {leftMatches.map((match) => (
             <div className="match-item" key={match.id}>

@@ -75,18 +75,30 @@ const PartnerCommunity = () => {
 
 
   useEffect(() => {
+    let cancelled = false;
+
     const fetchApiData = async () => {
       try {
         // Fetching 10 users as "Global Collaborators"
         const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+        if (cancelled) return;
         setApiPartners(response.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching live partners:", error);
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
-    fetchApiData();
+
+    // Simulated 1.2s delay for a premium visual synchronization experience
+    const timer = setTimeout(() => {
+      fetchApiData();
+    }, 1200);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
@@ -213,21 +225,60 @@ const PartnerCommunity = () => {
             </div>
 
             {loading ? (
-              <div className="flex flex-col items-center justify-center py-20">
-                <div className="relative w-20 h-20">
-                  <div className="absolute inset-0 border-4 border-cyan-500/20 rounded-full" />
+              <div className="flex flex-col items-center justify-center py-24 relative">
+                {/* Cybernetic outer pulsing shield */}
+                <motion.div 
+                  className="absolute w-24 h-24 rounded-full border border-cyan-500/20"
+                  animate={{
+                    scale: [1, 1.15, 1],
+                    opacity: [0.2, 0.6, 0.2],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 2,
+                    ease: "easeInOut"
+                  }}
+                  style={{
+                    boxShadow: '0 0 20px rgba(6, 182, 212, 0.15)'
+                  }}
+                />
+
+                <div className="relative w-16 h-16 flex items-center justify-center">
+                  {/* Glowing core */}
+                  <div className="absolute w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 blur-[8px] opacity-40 animate-pulse" />
+                  
+                  {/* Outer spinning ring */}
                   <motion.div 
-                    className="absolute inset-0 border-4 border-t-cyan-500 rounded-full"
+                    className="absolute inset-0 border-2 border-transparent border-t-cyan-400 border-r-cyan-400 rounded-full"
                     animate={{ rotate: 360 }}
-                    transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                    transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
+                    style={{
+                      filter: 'drop-shadow(0 0 8px rgba(6, 182, 212, 0.5))'
+                    }}
+                  />
+                  
+                  {/* Inner reverse spinning ring */}
+                  <motion.div 
+                    className="absolute w-10 h-10 border-2 border-transparent border-b-purple-500 border-l-purple-500 rounded-full"
+                    animate={{ rotate: -360 }}
+                    transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
+                    style={{
+                      filter: 'drop-shadow(0 0 8px rgba(168, 85, 247, 0.5))'
+                    }}
                   />
                 </div>
+
                 <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="mt-6 text-cyan-400 font-bold tracking-widest uppercase text-sm animate-pulse"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-8 flex flex-col items-center gap-1"
                 >
-                  Syncing with Global Network...
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-bold tracking-[0.2em] uppercase text-xs">
+                    Syncing with Global Network
+                  </span>
+                  <span className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold animate-pulse">
+                    Establishing secure handshake...
+                  </span>
                 </motion.div>
               </div>
             ) : (
@@ -270,7 +321,7 @@ const PartnerCommunity = () => {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {tiers.map((tier, i) => (
-                <div key={i} className={`p-8 rounded-xl border ${tier.featured ? 'border-cyan-500 bg-cyan-950/10' : 'border-white/10 bg-black'} relative`}>
+                <div key={i} className="p-8 rounded-xl border border-white/10 bg-black relative">
                   <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${tier.color}`} />
                   <div className="text-xs font-black uppercase tracking-widest text-cyan-400 mb-2">{tier.name}</div>
                   <div className="text-3xl font-black mb-4">{tier.price}</div>
@@ -281,7 +332,7 @@ const PartnerCommunity = () => {
                       </div>
                     ))}
                   </div>
-                  <button className={`w-full py-3 font-black uppercase text-xs tracking-widest transition-all ${tier.featured ? 'bg-cyan-500 text-black' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+                  <button className="w-full py-3 font-black uppercase text-xs tracking-widest transition-all bg-white/10 text-white hover:bg-white/20">
                     Select Tier
                   </button>
                 </div>

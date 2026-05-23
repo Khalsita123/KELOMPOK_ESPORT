@@ -107,12 +107,24 @@ const CSGOCommunity = () => {
             variants={fadeUp} 
             className="flex gap-4 justify-center flex-wrap"
           >
-            <button className="bg-amber-500 text-black font-black px-10 py-4 border-none uppercase tracking-[3px] text-sm cursor-pointer [clip-path:polygon(12px_0%,100%_0%,calc(100%-12px)_100%,0%_100%)] transition-transform hover:scale-105">
+            <a 
+              href="https://www.facebook.com/groups/csgo.indonesia/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-block no-underline bg-amber-500 text-black font-black px-10 py-4 border-none uppercase tracking-[3px] text-sm cursor-pointer [clip-path:polygon(12px_0%,100%_0%,calc(100%-12px)_100%,0%_100%)] transition-transform hover:scale-105"
+              style={{ textDecoration: 'none' }}
+            >
               <span className="flex items-center gap-2.5"><Crosshair size={18} /> Join The Squad</span>
-            </button>
-            <button className="bg-transparent text-white font-bold px-10 py-4 border border-white/15 uppercase tracking-[3px] text-sm cursor-pointer backdrop-blur-md transition-colors hover:border-amber-500">
+            </a>
+            <a 
+              href="https://www.youtube.com/@ESLCSHighlights" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-block no-underline bg-transparent text-white font-bold px-10 py-4 border border-white/15 uppercase tracking-[3px] text-sm cursor-pointer backdrop-blur-md transition-colors hover:border-amber-500"
+              style={{ textDecoration: 'none' }}
+            >
               <span className="flex items-center gap-2.5"><Eye size={18} /> Watch Highlights</span>
-            </button>
+            </a>
           </motion.div>
         </motion.div>
 
@@ -346,6 +358,17 @@ className={`
           </button>
         </motion.div>
       </section>
+
+      {/* Custom CSS overrides to guarantee NO underlines on any interactive states */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        a, a:hover, a:focus, a:active {
+          text-decoration: none !important;
+          outline: none !important;
+          border-bottom: none !important;
+          box-shadow: none !important;
+        }
+      `}} />
     </div>
   );
 };
