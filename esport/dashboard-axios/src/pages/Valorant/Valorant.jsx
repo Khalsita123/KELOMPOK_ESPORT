@@ -2,87 +2,7 @@ import { useState, useEffect } from 'react';
 import backgroundBg from './background.jpg';
 import valorantLogo from './logo valorant.png';
 import xLogo from './X Logo.png';
-import Player_1 from './Player_1.png';
-import Player_2 from './Player_2.png';
-import Player_3 from './Player_3.png';
-import Player_4 from './Player_4.png';
-import Player_5 from './Player_5.png';
-import Player_6 from './Player_6.png';
-
-const players = [
-  {
-    id: 1,
-    ign: "Freakcman",
-    name: "Amier D Yeager",
-    role: "PLAYER",
-    age: 21,
-    country: "Indonesia",
-    currentTeam: "VALORANT",
-    twitter: "faza_fath",
-    bio: "Freakcman joined Team Hiling Streak in September 2021, joining them as they enter the world of VALORANT. Previously a professional Dota 2 and Overwatch player, Freakcman brings a wealth of experience that he will use to guide the rest of the team.",
-    image: Player_5,
-  },
-  {
-    id: 2,
-    ign: "Sflh",
-    name: "Syaifullah",
-    role: "PLAYER",
-    age: 21,
-    country: "Indonesia",
-    currentTeam: "VALORANT",
-    twitter: "sflh",
-    bio: "Syaifullah is a force to be reckoned with on the field. Known for his exceptional shooting and tactical understanding of the game, he leads his team to victory with a calm yet confident presence. Off the field, Jeremy is known for his cheerful personality and love of sleep, joking that he can 'sleep through a game and still score a lot of points'.",
-    image: Player_2,
-  },
-  {
-    id: 3,
-    ign: "NDG",
-    name: "Noel Quimbo De Guia",
-    role: "PLAYER",
-    age: 21,
-    country: "Indonesia",
-    currentTeam: "VALORANT",
-    twitter: "HS_NDG",
-    bio: "NDG is a talented young VALORANT player known for his aggressive playstyle and sharp mechanical skills. With a natural feel for the game, he continues to push boundaries and develop as a top-tier competitor in the Pacific region.",
-    image: Player_3,
-  },
-  {
-    id: 4,
-    ign: "Invy",
-    name: "Adrian Reyes",
-    role: "PLAYER",
-    age: 21,
-    country: "Indonesia",
-    currentTeam: "VALORANT",
-    twitter: "HS_invy",
-    bio: "Invy is a fun-loving and motivated VALORANT player known for his positive attitude and fierce competitiveness. He approaches each match with a desire to win and a willingness to put in the work to improve his skills and help the team succeed.",
-    image: Player_4,
-  },
-  {
-    id: 5,
-    ign: "2GE",
-    name: "Michael James L. Goopio",
-    role: "PLAYER",
-    age: 24,
-    country: "Indonesia",
-    currentTeam: "VALORANT",
-    twitter: "HS_2GE",
-    bio: "2GE brings a combination of raw skill and calculated decision-making to the team. His versatility and adaptability make him a valuable asset in any composition or map. A true team player who always puts the squad first.",
-    image: Player_1,
-  },
-  {
-    id: 6,
-    ign: "Wild0reoo",
-    name: "Brheyanne Christ Reyes",
-    role: "PLAYER",
-    age: 23,
-    country: "Indonesia",
-    currentTeam: "VALORANT",
-    twitter: "HS_Wild0reo",
-    bio: "Wild0reoo is an emerging talent in the VALORANT scene. With a fearless approach to the game and impressive game sense, he consistently delivers high-impact plays when it matters most. His clutch potential is unmatched.",
-    image: Player_6,
-  },
-];
+import { players } from './playerData';
 
 
 const RedCorners = () => (
@@ -307,8 +227,6 @@ export default function Valorant() {
         <PlayerModal player={selectedPlayer} onClose={handleCloseModal} />
       )}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
-
         .font-bebas {
           font-family: 'Bebas Neue', sans-serif;
         }
