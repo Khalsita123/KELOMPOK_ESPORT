@@ -29,7 +29,7 @@ export default function Hok() {
   return (
     <section className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Hero Section */}
-      <header
+      <section
         className="relative overflow-hidden px-6 pt-[85vh] pb-12 lg:px-20 min-h-[115vh] flex flex-col justify-end items-center bg-cover bg-center text-center"
         style={{ backgroundImage: `url(${hokBanner})` }}
       >
@@ -67,8 +67,8 @@ export default function Hok() {
             </div>
           </div>
         </div>
-      </header>
-      <main className="container mx-auto px-6 pb-20 space-y-10">
+      </section>
+      <div className="container mx-auto px-6 pb-20 space-y-10">
         {/* Formasi Pemain - Full Width Section */}
         <section id="formation" className="rounded-[2rem] border border-[#ffffff14] bg-[#08101b] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
           <h2 className="text-4xl font-bold mb-8 uppercase" style={{ color: accentColor }}>
@@ -194,7 +194,7 @@ export default function Hok() {
             </section>
           </aside>
         </section>
-      </main>
+      </div>
     </section>
   );
 }
