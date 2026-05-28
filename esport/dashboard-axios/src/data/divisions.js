@@ -2,8 +2,8 @@ export const divisions = {
   freefire: {
     id: "freefire",
     title: "FREE FIRE",
-    subtitle: "Tim Mobile Champions Nova Esport",
-    description: "Divisi Free Fire Nova Esport fokus pada kompetisi nasional dan regional. Tim kami mengandalkan strategi agresif dan rotasi cepat untuk mendominasi medan perang.",
+    subtitle: "Tim Mobile Champions Hilling Strike",
+    description: "Divisi Free Fire Hilling Strike fokus pada kompetisi nasional dan regional. Tim kami mengandalkan strategi agresif dan rotasi cepat untuk mendominasi medan perang.",
     banner: "https://images.hdqwalls.com/download/free-fire-2021-4k-71-1920x1080.jpg",
     accent: "#FFB085",
     accentLight: "#FFD1BA",
@@ -13,11 +13,10 @@ export const divisions = {
       { label: "Juara", value: "3 Kali" },
     ],
     players: [
-      { name: "Rafi", role: "Captain", specialty: "Sniper / Rotasi Cepat" },
-      { name: "Sari", role: "Support", specialty: "Pemulihan & Kontrol Zona" },
-      { name: "Dewa", role: "Fragger", specialty: "Eksekusi Rush" },
-      { name: "Lina", role: "Strategist", specialty: "Peta & Rotasi" },
-      { name: "Jaka", role: "Flex", specialty: "Push Objective" },
+      { name: "Hafizh", role: "Rusher", specialty: "Eksekusi Rush" },
+      { name: "Khalista", role: "Fragger", specialty: "Pemulihan & Kontrol Zona" },
+      { name: "Mirza", role: "Support", specialty: "Push Objective" },
+      { name: "Rizki", role: "Sniper", specialty: "Peta & Rotasi" },
     ],
     coaches: [
       {
@@ -50,16 +49,16 @@ export const divisions = {
       }
     ],
     roasterMain: [
-      { name: "HS_Hafizh", role: "Rifler", kills: 1450, rating: 1.45, image: "/src/assets/images/players/ff/hafizh.jpg" },
-      { name: "HS_Khalista", role: "Sniper", kills: 1320, rating: 1.38, image: "/src/assets/images/players/ff/khalista.jpg" },
-      { name: "HS_Mirza", role: "Medic", kills: 1180, rating: 1.32, image: "/src/assets/images/players/ff/mirza.jpg" },
-      { name: "HS_Rizki", role: "Supporter", kills: 1250, rating: 1.35, image: "/src/assets/images/players/ff/rizki.jpg" }
+      { name: "HS_Hafizh", role: "RUSHER", kills: 1450, rating: 1.45, image: "/src/assets/images/players/ff/hafizh.jpg" },
+      { name: "HS_Khalista", role: "FRAGGER", kills: 1320, rating: 1.38, image: "/src/assets/images/players/ff/khalista.jpg" },
+      { name: "HS_Mirza", role: "SUPPORT", kills: 1180, rating: 1.32, image: "/src/assets/images/players/ff/mirza.jpg" },
+      { name: "HS_Rizki", role: "SNIPER", kills: 1250, rating: 1.35, image: "/src/assets/images/players/ff/rizki.jpg" }
     ],
     roasterSub: [
-      { name: "HS_Flash", role: "Flex", image: "/src/assets/images/players/ff/flash.jpg" },
-      { name: "HS_Ghost", role: "Flex", image: "/src/assets/images/players/ff/ghost.jpg" },
-      { name: "HS_Angel", role: "Support", image: "/src/assets/images/players/ff/angel.jpg" },
-      { name: "HS_Warrior", role: "Fragger", image: "/src/assets/images/players/ff/warrior.jpg" }
+      { name: "HS_Ixzy", role: "Flex", image: "/src/assets/images/players/ff/tzy.png" },
+      { name: "HS_Uppi", role: "Flex", image: "/src/assets/images/players/ff/Uppi.png" },
+      { name: "HS_Brian", role: "Support", image: "/src/assets/images/players/ff/Brian.png" },
+      { name: "HS_Yana", role: "Fragger", image: "/src/assets/images/players/ff/dit2.png" }
     ],
     rankings: [
       { rank: 1, team: "Hilling Strike", points: 2850, wins: 67, losses: 12 },
@@ -72,9 +71,9 @@ export const divisions = {
   hok: {
     id: "hok",
     title: "HONOR OF KINGS",
-    subtitle: "Divisi MOBA Mobile Nova Esport",
+    subtitle: "Divisi MOBA Mobile Hilling Strike",
     description: "Honor of Kings adalah divisi MOBA unggulan kami; fokus pada koordinasi tim, drafting hero, dan kontrol objektif. Kami membangun sinergi untuk memenangkan pertarungan besar.",
-    banner: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+    banner: "/src/assets/HOK_Banner.png",
     accent: "#ffd700",
     accentLight: "#ffed4e",
     stats: [
@@ -91,18 +90,18 @@ export const divisions = {
     ],
     coaches: [
       {
-        name: "Coach Dragon",
+        name: "Coach Ixzy",
         position: "Head Coach",
         experience: "6+ tahun",
         specialty: "Strategic Drafting",
-        image: "/src/assets/images/coaches/coach-dragon.jpg"
+        image: "/src/assets/images/coaches/coach-ixzy.jpg"
       },
       {
-        name: "Coach Phoenix",
+        name: "Coach Satria",
         position: "Assistant Coach",
         experience: "4+ tahun",
         specialty: "Team Coordination",
-        image: "/src/assets/images/coaches/coach-phoenix.jpg"
+        image: "/src/assets/images/coaches/coach-satria.jpg"
       }
     ],
     teams: [
@@ -120,17 +119,13 @@ export const divisions = {
       }
     ],
     roasterMain: [
-      { name: "HS_Nadia", role: "Mid Laner", kills: 1250, rating: 1.42, image: "/src/assets/images/players/hok/nadia.jpg" },
-      { name: "HS_Bima", role: "Jungler", kills: 1180, rating: 1.38, image: "/src/assets/images/players/hok/bima.jpg" },
-      { name: "HS_Vina", role: "Support", kills: 1050, rating: 1.35, image: "/src/assets/images/players/hok/vina.jpg" },
-      { name: "HS_Rian", role: "Carry", kills: 1320, rating: 1.48, image: "/src/assets/images/players/hok/rian.jpg" }
+      { name: "HS_Mirza", role: "Mid Laner", kills: 1250, rating: 1.42, image: "/src/assets/images/players/hok/Ridho.jpg" },
+      { name: "HS_Ridho", role: "Jungler", kills: 1180, rating: 1.38, image: "/src/assets/images/players/hok/Mirza.jpg" },
+      { name: "HS_Rizki", role: "Support", kills: 1050, rating: 1.35, image: "/src/assets/images/players/hok/Hafizh.jpg" },
+      { name: "HS_Hafizh", role: "Carry", kills: 1320, rating: 1.48, image: "/src/assets/images/players/hok/Rizki.jpg" },
+      { name: "HS_Brian", role: "Flex", kills: 1120, rating: 1.36, image: "/src/assets/images/players/hok/Brian.jpg" }
     ],
-    roasterSub: [
-      { name: "HS_Fajar", role: "Flex", image: "/src/assets/images/players/hok/fajar.jpg" },
-      { name: "HS_Storm", role: "Flex", image: "/src/assets/images/players/hok/storm.jpg" },
-      { name: "HS_Light", role: "Support", image: "/src/assets/images/players/hok/light.jpg" },
-      { name: "HS_Shadow", role: "Jungler", image: "/src/assets/images/players/hok/shadow.jpg" }
-    ],
+
     rankings: [
       { rank: 1, team: "Hilling Strike", points: 2680, wins: 58, losses: 15 },
       { rank: 2, team: "Team Titans", points: 2520, wins: 52, losses: 20 },
