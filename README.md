@@ -3,4 +3,4 @@
 Proyek website resmi kelompok Esport.
 
 ## Deskripsi
-Website ini mencakup informs divisi game, partner, berita, dan toko resmi
+Website ini mencakup informasi divisi game, partner, berita, dan toko resmi.
