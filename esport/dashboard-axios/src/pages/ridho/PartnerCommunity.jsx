@@ -73,13 +73,37 @@ const PartnerCommunity = () => {
   const [apiPartners, setApiPartners] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Search and filter states
+  const [searchTerm, setSearchTerm] = useState('');
+  const [verifiedOnly, setVerifiedOnly] = useState(false);
+  const [sortOrder, setSortOrder] = useState('asc');
+  const [minId, setMinId] = useState(1);
+
+  // Compute filtered and sorted partners
+  const filteredPartners = apiPartners
+    .filter(item => {
+      const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                            item.company.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const isVerified = item.id % 2 !== 0;
+      const matchesVerified = !verifiedOnly || isVerified;
+      const matchesMinId = item.id >= minId;
+      return matchesSearch && matchesVerified && matchesMinId;
+    })
+    .sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.name.localeCompare(b.name);
+      } else {
+        return b.name.localeCompare(a.name);
+      }
+    });
+
+
 
   useEffect(() => {
     let cancelled = false;
 
     const fetchApiData = async () => {
       try {
-        // Fetching 10 users as "Global Collaborators"
         const response = await axios.get('https://jsonplaceholder.typicode.com/users');
         if (cancelled) return;
         setApiPartners(response.data);
@@ -90,7 +114,6 @@ const PartnerCommunity = () => {
       }
     };
 
-    // Simulated 1.2s delay for a premium visual synchronization experience
     const timer = setTimeout(() => {
       fetchApiData();
     }, 1200);
@@ -224,9 +247,109 @@ const PartnerCommunity = () => {
               </p>
             </div>
 
+            {/* ================= FILTER FORM ================= */}
+            {!loading && (
+              <motion.form 
+                onSubmit={(e) => e.preventDefault()}
+                className="mb-12 p-8 bg-white/[0.02] border border-white/5 rounded-2xl backdrop-blur-md grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 items-end"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                {/* Search Input (type="search") */}
+                <div className="flex flex-col gap-2 col-span-1 sm:col-span-2">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Search Collaborator</label>
+                  <div className="relative">
+                    <input 
+                      type="search" 
+                      placeholder="Search by name or company..." 
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+                    />
+                  </div>
+                </div>
+
+                {/* Radio Input (type="radio") */}
+                <div className="flex flex-col gap-2">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Sort Order</label>
+                  <div className="flex items-center gap-6 h-[46px] px-4 bg-black/20 border border-white/5 rounded-lg">
+                    <label className="flex items-center gap-2 text-xs font-bold uppercase cursor-pointer text-gray-300 hover:text-white transition-colors">
+                      <input 
+                        type="radio" 
+                        name="sortOrder" 
+                        value="asc"
+                        checked={sortOrder === 'asc'}
+                        onChange={(e) => setSortOrder(e.target.value)}
+                        className="accent-cyan-500 cursor-pointer w-4 h-4"
+                      />
+                      A - Z
+                    </label>
+                    <label className="flex items-center gap-2 text-xs font-bold uppercase cursor-pointer text-gray-300 hover:text-white transition-colors">
+                      <input 
+                        type="radio" 
+                        name="sortOrder" 
+                        value="desc"
+                        checked={sortOrder === 'desc'}
+                        onChange={(e) => setSortOrder(e.target.value)}
+                        className="accent-cyan-500 cursor-pointer w-4 h-4"
+                      />
+                      Z - A
+                    </label>
+                  </div>
+                </div>
+
+                {/* Checkbox Input (type="checkbox") */}
+                <div className="flex flex-col gap-2">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Verification Status</label>
+                  <div className="flex items-center h-[46px] px-4 bg-black/20 border border-white/5 rounded-lg">
+                    <label className="flex items-center gap-3 text-xs font-bold uppercase cursor-pointer text-gray-300 hover:text-white transition-colors select-none">
+                      <input 
+                        type="checkbox" 
+                        checked={verifiedOnly}
+                        onChange={(e) => setVerifiedOnly(e.target.checked)}
+                        className="accent-cyan-500 cursor-pointer w-4 h-4 rounded"
+                      />
+                      Only Verified
+                    </label>
+                  </div>
+                </div>
+
+                {/* Range Input (type="range") */}
+                <div className="flex flex-col gap-2 col-span-1 sm:col-span-2">
+                  <div className="flex justify-between items-center">
+                    <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Min Partner Tier ID</label>
+                    <span className="text-[10px] font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded">ID &gt;= {minId}</span>
+                  </div>
+                  <div className="flex items-center h-[46px] px-4 bg-black/20 border border-white/5 rounded-lg">
+                    <input 
+                      type="range" 
+                      min="1" 
+                      max="10" 
+                      value={minId}
+                      onChange={(e) => setMinId(Number(e.target.value))}
+                      className="w-full accent-cyan-500 cursor-pointer bg-white/10 h-1 rounded-lg appearance-none"
+                    />
+                  </div>
+                </div>
+
+                {/* Date Input (type="date") */}
+                <div className="flex flex-col gap-2 col-span-1 sm:col-span-2">
+                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Partnership Join Date Filter</label>
+                  <div className="relative">
+                    <input 
+                      type="date" 
+                      defaultValue="2026-05-24"
+                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500 transition-all [color-scheme:dark]"
+                    />
+                  </div>
+                </div>
+              </motion.form>
+            )}
+
             {loading ? (
               <div className="flex flex-col items-center justify-center py-24 relative">
-                {/* Cybernetic outer pulsing shield */}
                 <motion.div 
                   className="absolute w-24 h-24 rounded-full border border-cyan-500/20"
                   animate={{
@@ -244,10 +367,8 @@ const PartnerCommunity = () => {
                 />
 
                 <div className="relative w-16 h-16 flex items-center justify-center">
-                  {/* Glowing core */}
                   <div className="absolute w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 blur-[8px] opacity-40 animate-pulse" />
                   
-                  {/* Outer spinning ring */}
                   <motion.div 
                     className="absolute inset-0 border-2 border-transparent border-t-cyan-400 border-r-cyan-400 rounded-full"
                     animate={{ rotate: 360 }}
@@ -289,28 +410,42 @@ const PartnerCommunity = () => {
                 viewport={{ once: true }}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"
               >
-                {apiPartners.map((item, i) => (
-                  <motion.div
-                    key={item.id}
-                    variants={fadeUp}
-                    className="group relative p-6 bg-white/[0.03] border border-white/5 rounded-xl hover:bg-white/[0.08] hover:border-cyan-500/30 transition-all duration-500 cursor-pointer overflow-hidden"
-                  >
-                    <div className="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                      <Globe size={80} />
-                    </div>
-                    <div className="relative z-10">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mb-4 text-white font-bold text-xl group-hover:scale-110 transition-transform">
-                        {item.name.charAt(0)}
+                {filteredPartners.length === 0 ? (
+                  <div className="col-span-full py-16 text-center border border-white/5 bg-white/[0.01] rounded-xl">
+                    <p className="text-gray-400 text-sm font-bold uppercase tracking-widest">No Collaborators Found</p>
+                    <p className="text-[10px] text-gray-500 uppercase tracking-wider mt-1">Try adjusting your search query or filter parameters</p>
+                  </div>
+                ) : (
+                  filteredPartners.map((item, i) => (
+                    <motion.div
+                      key={item.id}
+                      variants={fadeUp}
+                      className="group relative p-6 bg-white/[0.03] border border-white/5 rounded-xl hover:bg-white/[0.08] hover:border-cyan-500/30 transition-all duration-500 cursor-pointer overflow-hidden"
+                    >
+                      <div className="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <Globe size={80} />
                       </div>
-                      <h3 className="font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors line-clamp-1">{item.name}</h3>
-                      <div className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-4">{item.company.name}</div>
-                      <div className="flex items-center gap-2 text-[9px] text-cyan-400 font-medium bg-cyan-500/10 px-2 py-1 rounded w-fit">
-                        <Activity size={10} />
-                        VERIFIED PARTNER
+                      <div className="relative z-10">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mb-4 text-white font-bold text-xl group-hover:scale-110 transition-transform">
+                          {item.name.charAt(0)}
+                        </div>
+                        <h3 className="font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors line-clamp-1">{item.name}</h3>
+                        <div className="text-[10px] text-gray-500 uppercase tracking-widest font-bold mb-4">{item.company.name}</div>
+                        {item.id % 2 !== 0 ? (
+                          <div className="flex items-center gap-2 text-[9px] text-cyan-400 font-medium bg-cyan-500/10 px-2 py-1 rounded w-fit">
+                            <Activity size={10} />
+                            VERIFIED PARTNER
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-2 text-[9px] text-gray-400 font-medium bg-white/5 px-2 py-1 rounded w-fit">
+                            <Activity size={10} />
+                            STANDARD PARTNER
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  ))
+                )}
               </motion.div>
             )}
           </div>
