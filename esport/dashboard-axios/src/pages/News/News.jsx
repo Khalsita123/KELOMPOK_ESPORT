@@ -165,7 +165,7 @@ export default function News() {
       })
       .catch(err => {
         console.error("Error fetching news, falling back to local news:", err);
-        // Resilient fallback using local customEsportsNews
+        
         const fallbackNews = customEsportsNews.map((gameNews, index) => {
           const date = new Date();
           date.setDate(date.getDate() - (index * 3));

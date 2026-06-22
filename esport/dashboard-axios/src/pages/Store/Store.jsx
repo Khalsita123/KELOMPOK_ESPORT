@@ -83,7 +83,7 @@ function Store() {
           
           <div className="flex gap-2 items-center">
             {isSearchActive && (
-              <div className="animate-[slideLeft_0.3s_ease_forwards] overflow-hidden">
+              <form onSubmit={(e) => e.preventDefault()} className="animate-[slideLeft_0.3s_ease_forwards] overflow-hidden">
                 <input 
                   type="text" 
                   className="bg-[#1a1a1a] text-white border border-[#333] outline-none focus:border-gray-500 rounded-none p-3 w-full" 
@@ -92,7 +92,7 @@ function Store() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   autoFocus
                 />
-              </div>
+              </form>
             )}
 
             <button 
